@@ -132,19 +132,20 @@ const chatData = {
         ]
     },
 
-    qrCode: {
-        text: `Zde je QR kód pro platbu. Kliknutím na něj ho zvětšíte:<br><br>
-               <img src="${CONFIG.QR_CODE_URL}" 
-                    class="chat-qr-img" 
-                    onclick="window.toggleFullScreenQR(this)" 
-                    alt="QR kód k platbě">
-               <br><i>Po zaplacení mi prosím dejte vědět do zprávy.</i>`,
-        options: [
-            { label: "🚚 Doprava a ceny", next: "shipping" },
-            { label: "📞 Kontakt na mě", next: "contact" },
-            { label: "⬅️ Zpět na začátek", next: "start" }
-        ]
-    },
+qrCode: {
+    text: `Zde je QR kód pro platbu. Kliknutím na něj ho zvětšíte:<br><br>
+           <img src="${CONFIG.QR_CODE_URL}" 
+                class="chat-qr-img" 
+                onclick="window.openQrZoom()" 
+                style="cursor: pointer;"
+                alt="QR kód k platbě">
+           <br><i>Po zaplacení mi prosím dejte vědět do zprávy.</i>`,
+    options: [
+        { label: "🚚 Doprava a ceny", next: "shipping" },
+        { label: "📞 Kontakt na mě", next: "contact" },
+        { label: "⬅️ Zpět na začátek", next: "start" }
+    ]
+},
 
     cod: {
         text: `<b>Ano, dobírka je bez problému možná!</b> 👍<br><br>Funguje to jednoduše:<br>1. Předem zaplatíte pouze cenu za poštovné.<br>2. Samotný produkt zaplatíte až při převzetí balíčku.<br><br>Vše společně domluvíme za minutku přes <a href="https://wa.me/420730996444" target="_blank">WhatsApp</a>.`,
