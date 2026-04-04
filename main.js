@@ -606,7 +606,7 @@ window.handleRemoveFromCart = function(id) {
     removeFromCartModule(id);
     renderCart();
     updateCartBadge();
-    showToast("Položka odebrána z košíku", "🗑️");
+    showToast("Položka odebrána z košíčku", "🗑️");
 };
 
 window.handleChangeQty = function(id, delta) {
