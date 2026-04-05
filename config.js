@@ -7,7 +7,7 @@ export let CONFIG = {
     PHONE: "+420730996444",
     EMAIL: "hello.plisek@gmail.com",
     BANK_ACCOUNT: "670100-2212159557 / 6210",
-    QR_CODE_URL: "https://i.ibb.co/qF1FyvG2/mbank.jpg",
+    QR_CODE_URL: "https://i.ibb.co/cKbxhbk1/mbank.jpg",
     BASE_URL: "https://woodisek.github.io/",
     MAX_LOAD_ATTEMPTS: 3,
     FETCH_TIMEOUT: 15000,
