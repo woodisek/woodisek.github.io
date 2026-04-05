@@ -1179,7 +1179,7 @@ async function init() {
     renderCart();
     setTimeout(() => {
     handleHashScroll();
-}, 500);
+}, 3000);
     updateCartBadge();
 }
 
@@ -1188,7 +1188,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('load', () => {
     setTimeout(() => {
         handleHashScroll();
-    }, 300);
+    }, 1500);
 });
 });
 
