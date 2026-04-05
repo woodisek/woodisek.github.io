@@ -315,32 +315,6 @@ function closeChatPanel() {
     document.body.style.overflow = '';
     if (chatBtn) chatBtn.style.display = 'flex';
 }
-// ============================================================
-// EXPORT DO GLOBÁLNÍHO OKNA
-// ============================================================
-window.getUserId = function() {
-  let userId = localStorage.getItem('woodisek_user_id');
-  if (!userId) {
-    userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-    localStorage.setItem('woodisek_user_id', userId);
-  }
-  return userId;
-};
-
-window.testRateLimit = function() {
-  const userId = window.getUserId();
-  const callbackName = `test_${Date.now()}`;
-  
-  window[callbackName] = function(response) {
-    console.log("📊 Výsledek testu:", response);
-    alert(response.steps);
-    delete window[callbackName];
-  };
-  
-  const script = document.createElement('script');
-  script.src = `${APPS_SCRIPT_URL}?callback=${callbackName}&userId=${userId}`;
-  document.body.appendChild(script);
-};
 
 
 // Globální exporty
