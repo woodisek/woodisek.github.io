@@ -30,6 +30,15 @@ const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyxXxZKLc6WjAHZ
 let chatInitialized = false;
 let isWaitingForResponse = false;
 
+function getUserId() {
+  let userId = localStorage.getItem('woodisek_user_id');
+  if (!userId) {
+    userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    localStorage.setItem('woodisek_user_id', userId);
+  }
+  return userId;
+}
+
 // ============================================================
 // PŘEPNUTÍ PANELU CHATU
 // ============================================================
@@ -242,7 +251,8 @@ async function sendUserMessage(message) {
             };
             
             const script = document.createElement('script');
-            script.src = `${APPS_SCRIPT_URL}?callback=${callbackName}&task=${encodeURIComponent(message)}`;
+            const userId = getUserId();
+            script.src = `${APPS_SCRIPT_URL}?callback=${callbackName}&task=${encodeURIComponent(message)}&userId=${encodeURIComponent(userId)}`;
             script.onerror = () => {
                 clearTimeout(timeoutId);
                 reject(new Error('Network error'));
