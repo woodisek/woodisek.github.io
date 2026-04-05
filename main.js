@@ -1107,65 +1107,59 @@ async function init() {
     });
     initSocialProof();
     
-    // ============================================================
+// ============================================================
     // KONTROLA OBCHODU
     // ============================================================
     if (CONFIG.Enable_Shop === false) {
-    console.log("🚫 Obchod je vypnutý");
-    
-    // ZOBRAZÍME VYHLEDÁVÁNÍ A FILTRY
-    const searchContainer = document.querySelector(".search-container");
-    if (searchContainer) searchContainer.style.display = "block";
-    
-    const filtersContainer = document.getElementById("filters");
-    if (filtersContainer) filtersContainer.style.display = "flex";
-    
-    const priceFilterBtn = document.getElementById("price-filter-toggle");
-    if (priceFilterBtn) priceFilterBtn.style.display = "flex";
-    
-    // MALÝ TEXT POD LOGEM
-    //const productCountEl = document.getElementById("product-count");
-    //if (productCountEl) {
-        productCountEl.style.display = 'block';
-        productCountEl.innerHTML = '🪵 Obchod je dočasně zavřený...';
-    ///}
-    
-    // VELKÁ ZPRÁVA V KARTĚ
-    const shopContainer = document.getElementById("shop");
-    if (shopContainer) {
-        shopContainer.style.display = 'grid';
-        shopContainer.innerHTML = `
-            <div class="product-card" style="grid-column: 1 / -1; display: flex; align-items: center; justify-content: center; min-height: 300px;">
-                <div style="text-align: center; padding: 40px;">
-                    <div style="font-size: 64px; margin-bottom: 20px;">🪵</div>
-                    <h3 style="color: var(--accent); margin-bottom: 10px; font-size: 24px;">Obchod je dočasně zavřený</h3>
-                    <p style="color: var(--text-dim); font-size: 16px;">Brzy tu bude veselo! Koukněte na můj blog :)</p>
+        console.log("🚫 Obchod je vypnutý");
+        
+        // ZOBRAZÍME VYHLEDÁVÁNÍ A FILTRY
+        const searchContainer = document.querySelector(".search-container");
+        if (searchContainer) searchContainer.style.display = "block";
+        
+        const filtersContainer = document.getElementById("filters");
+        if (filtersContainer) filtersContainer.style.display = "flex";
+        
+        const priceFilterBtn = document.getElementById("price-filter-toggle");
+        if (priceFilterBtn) priceFilterBtn.style.display = "flex";
+        
+        // MALÝ TEXT POD LOGEM
+        const productCountEl = document.getElementById("product-count");
+        if (productCountEl) {
+            productCountEl.style.display = 'block';
+            productCountEl.innerHTML = '🪵 Obchod je dočasně zavřený...';
+        }
+        
+        // VELKÁ ZPRÁVA V KARTĚ
+        const shopContainer = document.getElementById("shop");
+        if (shopContainer) {
+            // VYČIŠTĚNÍ SKELETONŮ PŘED VLOŽENÍM ZPRÁVY
+            shopContainer.innerHTML = ""; 
+            
+            shopContainer.style.display = 'grid';
+            shopContainer.innerHTML = `
+                <div class="product-card" style="grid-column: 1 / -1; display: flex; align-items: center; justify-content: center; min-height: 300px; cursor: default; transform: none !important; transition: none !important; box-shadow: none !important; outline: none !important; border: none !important;">
+                    <div style="text-align: center; padding: 40px;">
+                        <div class="shop-closed-icon" style="font-size: 64px; margin-bottom: 20px; display: inline-block;">🪵</div>
+                        <h3 class="shop-closed-title" style="color: var(--accent); margin-bottom: 10px; font-size: 24px;">Obchod je dočasně zavřený</h3>
+                        <p style="color: var(--text-dim); font-size: 16px;">Brzy tu bude veselo! Koukněte na můj blog :)</p>
+                    </div>
                 </div>
-            </div>
-        `;
+            `;
+        }
+        
+        // Košík a ostatní
+        const cartIconBtn = document.querySelector('.header-actions .icon-btn');
+        if (cartIconBtn) cartIconBtn.style.display = 'flex';
+        
+        const floatingCartBtn = document.getElementById("floating-cart-btn");
+        if (floatingCartBtn) floatingCartBtn.style.display = 'flex';
+        
+        // Portfolio, atd.
+        initPortfolio();
+        
+        return;
     }
-    shopContainer.innerHTML = `
-<div class="product-card" style="grid-column: 1 / -1; display: flex; align-items: center; justify-content: center; min-height: 300px; cursor: default; transform: none !important; transition: none !important; box-shadow: none !important; outline: none !important; border: none !important;">
-    <div style="text-align: center; padding: 40px;">
-        <div class="shop-closed-icon" style="font-size: 64px; margin-bottom: 20px; display: inline-block;">🪵</div>
-        <h3 class="shop-closed-title" style="color: var(--accent); margin-bottom: 10px; font-size: 24px;">Obchod je dočasně zavřený</h3>
-        <p style="color: var(--text-dim); font-size: 16px;">Brzy tu bude veselo! Koukněte na můj blog :)</p>
-    </div>
-</div>
-`;
-    
-    // Košík a ostatní
-    const cartIconBtn = document.querySelector('.header-actions .icon-btn');
-    if (cartIconBtn) cartIconBtn.style.display = 'flex';
-    
-    const floatingCartBtn = document.getElementById("floating-cart-btn");
-    if (floatingCartBtn) floatingCartBtn.style.display = 'flex';
-    
-    // Portfolio, atd.
-    initPortfolio();
-    
-    return;
-}
     
     // ============================================================
     // ZBYTEK INICIALIZACE PRODUKTŮ
