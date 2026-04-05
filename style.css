@@ -1345,3 +1345,13 @@ body.maintenance-active {
     }
 }
 
+/* QR kód v chatu – pokud bys chtěl obrázek */
+.chat-qr-img {
+    width: 150px !important;
+    height: auto !important;
+    max-width: 150px !important;
+    cursor: pointer;
+    border-radius: 12px;
+    display: block;
+    margin: 10px auto;
+}
