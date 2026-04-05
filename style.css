@@ -58,7 +58,16 @@ body::before {
 @keyframes notice-me { 0%, 90%, 98%, 100% { transform: scale(1) rotate(0deg); } 92% { transform: scale(1.2) rotate(10deg); } 94% { transform: scale(1.2) rotate(-10deg); } 96% { transform: scale(1.2) rotate(5deg); } }
 @keyframes burnEffect { 0% { opacity: 0; color: #ff6b00; text-shadow: 0 0 8px #ff4500; } 50% { opacity: 1; color: #ffcc00; } 100% { opacity: 1; color: var(--text); text-shadow: none; } }
 @keyframes progressShimmer { 0% { width: 0%; opacity: 0.5; } 50% { width: 70%; opacity: 1; } 100% { width: 100%; opacity: 0.5; } }
-@keyframes logoMagic { 0%, 100% { transform: scale(1) rotate(0deg); filter: drop-shadow(0 0 0 rgba(122,78,45,0)); } 25%, 75% { transform: scale(1.03) rotate(2deg); filter: drop-shadow(0 5px 15px rgba(122,78,45,0.3)); } }
+
+
+
+
+
+
+
+
+
+
 @keyframes emptyFadeIn { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
 @keyframes emptyIconDance { 0%, 100% { transform: translateY(0px) rotate(0deg); } 25% { transform: translateY(-15px) rotate(-10deg); } 75% { transform: translateY(-15px) rotate(10deg); } }
 @keyframes emptyTextGlow { 0%, 100% { text-shadow: 0 0 0px rgba(122, 78, 45, 0); } 50% { text-shadow: 0 0 15px rgba(122, 78, 45, 0.5); } }
@@ -167,7 +176,7 @@ img { content-visibility: auto; contain-intrinsic-size: 300px; }
 .sk-btn-main { height: 42px; flex-grow: 1; border-radius: 10px; }
 .sk-btn-side { width: 45px; height: 42px; flex-shrink: 0; border-radius: 10px; }
 #about { max-width: 600px; margin: 60px auto 40px; padding: 30px 20px; border-radius: 24px; text-align: center; display: flex; flex-direction: column; align-items: center; }
-.about-img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); margin-bottom: 50px; animation: logoMagic 5s ease-in-out infinite; transform-origin: center; }
+.about-img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); margin-bottom: 50px; transform-origin: center; }
 
 .portfolio-section { width: 100%; margin-top: 20px; padding: 0; }
 .portfolio-slider, #port-slider, .blog-slider { position: relative; width: 100%; max-width: 100%; margin: 0 auto; background: var(--card) !important; border-radius: 16px; overflow: hidden; z-index: 2; }
@@ -1354,4 +1363,154 @@ body.maintenance-active {
     border-radius: 12px;
     display: block;
     margin: 10px auto;
+}
+
+/* ======================================== */
+/* ANIMOVANÁ TLAČÍTKA V CHATU - VŠECHNA PULZUJÍ */
+/* ======================================== */
+
+.quick-questions-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.chat-opt-btn {
+    background: linear-gradient(135deg, var(--card) 0%, var(--bg) 100%);
+    border: 1px solid var(--accent);
+    color: var(--text);
+    padding: 10px 16px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(4px);
+    
+    /* 🔥 PULZOVÁNÍ PRO VŠECHNA TLAČÍTKA */
+    animation: chatBtnPulse 2s ease-in-out infinite;
+}
+
+/* EFEKT PŘI HOVERU (myš) */
+.chat-opt-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    background: linear-gradient(135deg, var(--accent) 0%, #8b5a2b 100%);
+    color: white;
+    box-shadow: 0 8px 20px rgba(122, 78, 45, 0.4);
+    border-color: transparent;
+    animation: none; /* Zastaví pulzování při hoveru */
+}
+
+/* EFEKT PŘI KLIKNUTÍ */
+.chat-opt-btn:active {
+    transform: translateY(2px) scale(0.96);
+    transition: 0.05s;
+}
+
+/* VLNA PŘI KLIKNUTÍ */
+.chat-opt-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%);
+    transition: width 0.4s, height 0.4s;
+}
+
+.chat-opt-btn:active::after {
+    width: 120px;
+    height: 120px;
+}
+
+/* 🔥 PULZOVACÍ ANIMACE */
+@keyframes chatBtnPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(122, 78, 45, 0.5);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(122, 78, 45, 0);
+        transform: scale(1.02);
+    }
+}
+
+/* POSTUPNÉ ROZJETÍ PŘI NAČTENÍ */
+.quick-questions-container .chat-opt-btn {
+    animation: chatBtnFadeIn 0.3s ease backwards, chatBtnPulse 2s ease-in-out infinite;
+}
+
+.quick-questions-container .chat-opt-btn:nth-child(1) { animation-delay: 0.02s, 0s; }
+.quick-questions-container .chat-opt-btn:nth-child(2) { animation-delay: 0.04s, 0.2s; }
+.quick-questions-container .chat-opt-btn:nth-child(3) { animation-delay: 0.06s, 0.4s; }
+.quick-questions-container .chat-opt-btn:nth-child(4) { animation-delay: 0.08s, 0.6s; }
+.quick-questions-container .chat-opt-btn:nth-child(5) { animation-delay: 0.10s, 0.8s; }
+.quick-questions-container .chat-opt-btn:nth-child(6) { animation-delay: 0.12s, 1.0s; }
+.quick-questions-container .chat-opt-btn:nth-child(7) { animation-delay: 0.14s, 1.2s; }
+.quick-questions-container .chat-opt-btn:nth-child(8) { animation-delay: 0.16s, 1.4s; }
+.quick-questions-container .chat-opt-btn:nth-child(9) { animation-delay: 0.18s, 1.6s; }
+
+@keyframes chatBtnFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* RESPONZIVITA */
+@media (max-width: 600px) {
+    .chat-opt-btn {
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+    .quick-questions-container {
+        gap: 6px;
+    }
+}
+
+/* ======================================== */
+/* NOVÁ ANIMACE PRO LOGO */
+/* ======================================== */
+
+.about-img {
+    animation: woodFloat 4s ease-in-out infinite, woodGlow 3s ease-in-out infinite;
+    transition: transform 0.3s ease;
+}
+
+.about-img:hover {
+    transform: scale(1.05) rotate(5deg);
+    animation-play-state: paused;
+}
+
+/* Plování nahoru a dolů */
+@keyframes woodFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* Jemné dýchání (změna velikosti) */
+@keyframes woodGlow {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(122, 78, 45, 0.4);
+        filter: drop-shadow(0 0 0 rgba(122, 78, 45, 0));
+    }
+    50% {
+        box-shadow: 0 0 0 15px rgba(122, 78, 45, 0);
+        filter: drop-shadow(0 0 8px rgba(122, 78, 45, 0.5));
+    }
 }
