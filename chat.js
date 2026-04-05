@@ -24,7 +24,7 @@ const localAnswers = {
 };
 
 // Apps Script URL
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxAQSY73Vf0qGrjtrp0BbPNYAAURqW6wZI3acWrzfoIgjMeegRFP522kupFNVoTnq8/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzDt4zWT7cFf099OcQq_nC_O9DnU_uQsgUk341GzShff52bwnx9d_x435Uiu8yhx4g/exec";
 
 // Stav chatu
 let chatInitialized = false;
