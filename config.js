@@ -50,6 +50,7 @@ export let CONFIG = {
     // ============================================================
     Cart_Title: "🛒 Nákupní košíček",
     Cart_Button_Text: "Objednat vše přes WhatsApp",
+    Zakazkova_Tvorba_Titulek: "Ukázky mé práce",
     Custom_Order_Button_Text: "Poptat výrobu na míru",
     Custom_Order_Message: "Dobrý den, mám zájem o zakázkovou výrobu. Rád bych probral detaily.",
     Custom_Order_Message: "Zaujala vás ukázka mojí práce?",
