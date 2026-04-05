@@ -24,7 +24,7 @@ const localAnswers = {
 };
 
 // Apps Script URL
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxt7r1dLzDnJq7mipPHM2J5lmF5TnkDXm3n7cyYLsw7BIn2TcqchOClzcQTr6bywUo/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwdCFsb8IHANDvXf7fFlST5ElzGO_Y3X80OURWMtQwAL8jp8K3S_X-BmHM4PRm6cDU/exec";
 
 // Stav chatu
 let chatInitialized = false;
@@ -80,7 +80,7 @@ function initChat() {
     // Úvodní zpráva
     const welcomeMsg = document.createElement('div');
     welcomeMsg.className = 'msg msg-system';
-    welcomeMsg.innerHTML = `👋 <b>Ahoj! Jsem Woodisek</b><br><br>Rád ti pomohu s objednávkou, dopravou nebo čímkoli dalším. Vyber si téma nebo napiš vlastní otázku! 🪵✨<br><br><span style="font-size: 12px; color: var(--text-dim);">📊 K dispozici máš 2 otázky za minutu a celkem 5 za den. Tlačítka se nepočítají 😉</span>`;
+    welcomeMsg.innerHTML = `👋 <b>Ahoj! Jsem Woodisek</b><br><br>Rád ti pomohu s objednávkou, dopravou nebo čímkoli dalším. Vyber si téma nebo napiš vlastní otázku! 🪵✨<br><br><span style="font-size: 12px; color: var(--text-dim);">📊 K dispozici máš 1 otázku za minutu a celkem 5 za den. Tlačítka se nepočítají 😉</span>`;
     chatBody.appendChild(welcomeMsg);
     
     // RYCHLÁ TLAČÍTKA (lokální odpovědi)
