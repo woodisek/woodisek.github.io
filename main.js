@@ -684,13 +684,40 @@ function handleHashScroll() {
     const performScroll = () => {
         const target = document.getElementById(hash);
         if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // Přidáme malý offset, aby produkt nebyl nalepený úplně nahoře pod menu
+            const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - 100; 
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+
             target.classList.add('section-highlight');
             setTimeout(() => target.classList.remove('section-highlight'), 2000);
             return true;
         }
         return false;
     };
+
+    // 1. Zkusíme scrollovat hned
+    if (!performScroll()) {
+        console.log("🚀 Produkt nenalezen, zkouším zobrazit vše...");
+        
+        // 2. Pokud produkt není v DOMu, zrušíme filtry a vynutíme render všech produktů
+        // Tato část vyžaduje, aby funkce renderProducts a proměnná allProducts byly dostupné
+        if (typeof renderProducts === 'function' && typeof allProducts !== 'undefined') {
+            
+            // Resetujeme filtry, aby se produkt mohl ukázat
+            if (typeof currentCategory !== 'undefined') window.currentCategory = 'Vše';
+            
+            // Vykreslíme vše (zrušíme omezení infinite scrollu pro tento moment)
+            renderProducts(allProducts);
+            
+            // 3. Zkusíme scrollovat znovu po krátké pauze na vykreslení
+            setTimeout(performScroll, 300);
+        }
+    }
 
     // Pokud nejsou produkty načtené, počkej
     if (!allProducts || allProducts.length === 0) {
