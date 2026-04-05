@@ -315,16 +315,6 @@ function closeChatPanel() {
     document.body.style.overflow = '';
     if (chatBtn) chatBtn.style.display = 'flex';
 }
-
-
-
-// Globální exporty
-window.toggleChatPanel = toggleChatPanel;
-window.initChat = initChat;
-window.closeChatPanel = closeChatPanel;
-
-export { toggleChatPanel, initChat, closeChatPanel };
-
 // ============================================================
 // EXPORT DO GLOBÁLNÍHO OKNA
 // ============================================================
@@ -351,3 +341,11 @@ window.testRateLimit = function() {
   script.src = `${APPS_SCRIPT_URL}?callback=${callbackName}&userId=${userId}`;
   document.body.appendChild(script);
 };
+
+
+// Globální exporty
+window.toggleChatPanel = toggleChatPanel;
+window.initChat = initChat;
+window.closeChatPanel = closeChatPanel;
+
+export { toggleChatPanel, initChat, closeChatPanel };
