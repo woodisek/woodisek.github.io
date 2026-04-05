@@ -828,7 +828,7 @@ if (CONFIG.Show_Contact_Section) {
             contactSection = document.createElement('div');
             contactSection.id = 'contact-section';
             contactSection.className = 'contact-section';
-            contactSection.style.cssText = 'margin-top: 30px; padding: 20px; background: var(--card); border-radius: var(--border-radius); border: 1px solid var(--border);';
+            contactSection.style.cssText = 'margin-top: 50px; padding: 20px; background: var(--card); border-radius: var(--border-radius); border: 1px solid var(--border);';
             
 contactSection.innerHTML = `
     <h3 style="color: var(--accent); margin-bottom: 15px; font-size: 16px;">📞 Kontakt</h3>
