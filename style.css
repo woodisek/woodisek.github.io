@@ -1573,3 +1573,8 @@ div, section, article, p, h1, h2, h3, h4, h5, h6 {
         transform: scale(1.05);
     }
 }
+/* Mezery pro text v About sekci */
+.about-text {
+    margin-top: 35px !important;
+    margin-bottom: 45px !important;
+}
