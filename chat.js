@@ -38,23 +38,7 @@ function getUserId() {
   }
   return userId;
 }
-// ============================================================
-// TESTOVÁNÍ RATE LIMITU (bez AI)
-// ============================================================
-function testRateLimit() {
-  const userId = getUserId();
-  const callbackName = `test_${Date.now()}`;
-  
-  window[callbackName] = function(response) {
-    console.log("📊 Výsledek testu:", response);
-    alert(response.steps);
-    delete window[callbackName];
-  };
-  
-  const script = document.createElement('script');
-  script.src = `${APPS_SCRIPT_URL}?callback=${callbackName}&userId=${userId}`;
-  document.body.appendChild(script);
-}
+window.getUserId = getUserId; // export do okna
 
 
 
@@ -329,6 +313,23 @@ function showToastInChat(text, icon = "🪵") {
         setTimeout(() => toast.classList.remove('show'), 2000);
     }
 }
+// ============================================================
+// TESTOVÁNÍ RATE LIMITU (bez AI)
+// ============================================================
+window.testRateLimit = function() {
+  const userId = getUserId();
+  const callbackName = `test_${Date.now()}`;
+  
+  window[callbackName] = function(response) {
+    console.log("📊 Výsledek testu:", response);
+    alert(response.steps);
+    delete window[callbackName];
+  };
+  
+  const script = document.createElement('script');
+  script.src = `${APPS_SCRIPT_URL}?callback=${callbackName}&userId=${userId}`;
+  document.body.appendChild(script);
+};
 
 // ============================================================
 // ZAVŘENÍ CHATU
@@ -343,6 +344,8 @@ function closeChatPanel() {
     document.body.style.overflow = '';
     if (chatBtn) chatBtn.style.display = 'flex';
 }
+
+
 
 // Globální exporty
 window.toggleChatPanel = toggleChatPanel;
