@@ -676,23 +676,14 @@ const MAX_BLOG_SCROLL_ATTEMPTS = 10;
 
 function handleHashScroll() {
     const hash = window.location.hash.substring(1);
-    if (!hash) return;
-
-    if (hash === 'blog') { window.showBlog(); return; }
-    if (hash === 'about') { window.showAbout(); return; }
+    if (!hash || ['blog', 'about'].includes(hash)) return;
 
     const performScroll = () => {
         const target = document.getElementById(hash);
         if (target) {
-            // Přidáme malý offset, aby produkt nebyl nalepený úplně nahoře pod menu
+            const offset = 100;
             const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
-            const offsetPosition = elementPosition - 100; 
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-
+            window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
             target.classList.add('section-highlight');
             setTimeout(() => target.classList.remove('section-highlight'), 2000);
             return true;
@@ -700,38 +691,29 @@ function handleHashScroll() {
         return false;
     };
 
-    // 1. Zkusíme scrollovat hned
-    if (!performScroll()) {
-        console.log("🚀 Produkt nenalezen, zkouším zobrazit vše...");
+    // 1. POKUS: Je produkt už na stránce?
+    if (performScroll()) return;
+
+    // 2. POKUS: Produkt tu není. Najdeme ho v datech a vložíme ho na začátek!
+    console.log("🔍 Produkt nenalezen v DOMu, vynucuji zobrazení...");
+    
+    if (typeof allProducts !== 'undefined' && allProducts.length > 0) {
+        const productData = allProducts.find(p => p.id === hash);
         
-        // 2. Pokud produkt není v DOMu, zrušíme filtry a vynutíme render všech produktů
-        // Tato část vyžaduje, aby funkce renderProducts a proměnná allProducts byly dostupné
-        if (typeof renderProducts === 'function' && typeof allProducts !== 'undefined') {
+        if (productData) {
+            // Resetujeme filtry a limit, aby se mohl vykreslit
+            window.currentCategory = 'Vše'; 
             
-            // Resetujeme filtry, aby se produkt mohl ukázat
-            if (typeof currentCategory !== 'undefined') window.currentCategory = 'Vše';
-            
-            // Vykreslíme vše (zrušíme omezení infinite scrollu pro tento moment)
-            renderProducts(allProducts);
-            
-            // 3. Zkusíme scrollovat znovu po krátké pauze na vykreslení
-            setTimeout(performScroll, 300);
+            // TADY JE TEN TRIK: Zavoláme render se všemi produkty
+            // Tím se v HTML vytvoří úplně všechno a ID bude existovat.
+            if (typeof renderProducts === 'function') {
+                renderProducts(allProducts); 
+                
+                // Teď už tam je, tak srolujeme
+                setTimeout(performScroll, 200);
+            }
         }
     }
-
-    // Pokud nejsou produkty načtené, počkej
-    if (!allProducts || allProducts.length === 0) {
-        const interval = setInterval(() => {
-            if (allProducts && allProducts.length > 0) {
-                clearInterval(interval);
-                performScroll();
-            }
-        }, 100);
-        setTimeout(() => clearInterval(interval), 5000);
-        return;
-    }
-
-    performScroll();
 }
 
 // ============================================================
