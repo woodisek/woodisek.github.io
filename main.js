@@ -1142,7 +1142,7 @@ async function init() {
                     <div style="text-align: center; padding: 40px;">
                         <div class="shop-closed-icon" style="font-size: 64px; margin-bottom: 20px; display: inline-block;">🪵</div>
                         <h3 class="shop-closed-title" style="color: var(--accent); margin-bottom: 10px; font-size: 24px;">Obchod je dočasně zavřený</h3>
-                        <p style="color: var(--text-dim); font-size: 16px;">Brzy tu bude veselo! Koukněte na můj blog :)</p>
+                        <p style="color: var(--text-dim); font-size: 16px;">Brzy tu bude veselo!</p>
                     </div>
                 </div>
             `;
