@@ -110,7 +110,20 @@
     <span id="floating-cart-badge">0</span>
 </button>
 
-
+<div id="chat-overlay-bg" onclick="closeChatPanel()"></div>
+<div id="chat-modal">
+    <div class="chat-header">
+        <div class="chat-title">💬 Woodisek AI Rádce</div>
+        <button class="close-chat" onclick="closeChatPanel()">×</button>
+    </div>
+    <div class="chat-body" id="chat-body">
+        <!-- Zprávy budou dynamicky přidávány -->
+    </div>
+    <div class="chat-footer-options" id="chat-options">
+        <!-- Tlačítka a input pole budou dynamicky generovány -->
+    </div>
+</div>
+<button id="chat-toggle-btn" onclick="toggleChatPanel()"><span>💬</span></button>
 
     <div class="header-actions">
         <button class="icon-btn" onclick="toggleCart()">🛒 <span id="cart-badge">0</span></button>
