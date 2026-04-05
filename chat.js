@@ -316,6 +316,17 @@ function closeChatPanel() {
     if (chatBtn) chatBtn.style.display = 'flex';
 }
 
+// ============================================================
+// FUNKCE PRO ZÍSKÁNÍ UNIKÁTNÍHO ID UŽIVATELE
+// ============================================================
+function getUserId() {
+  let userId = localStorage.getItem('woodisek_user_id');
+  if (!userId) {
+    userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    localStorage.setItem('woodisek_user_id', userId);
+  }
+  return userId;
+}
 
 // Globální exporty
 window.toggleChatPanel = toggleChatPanel;
