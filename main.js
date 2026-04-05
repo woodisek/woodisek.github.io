@@ -1161,37 +1161,56 @@ async function init() {
         return;
     }
     
-    // ============================================================
+// ============================================================
     // ZBYTEK INICIALIZACE PRODUKTŮ
     // ============================================================
     const shopContainer = document.getElementById("shop");
 
-    
     try {
         const data = await initProducts();
         
+        // KLÍČOVÉ: Jakmile máme data (i prázdná), vymažeme skeletony z HTML
+        if (shopContainer) {
+            shopContainer.innerHTML = "";
+        }
+        
+        // Pokud data nejsou nebo je obchod vypnutý (pojistka), skončíme
+        if (!data || data.length === 0) {
+            console.log("Nenalezena žádná data produktů.");
+            return;
+        }
+
         // PortfolioImages už jsou nastavené, ale pokud initProducts() něco přepíše:
         if (CONFIG.PortfolioImages && Array.isArray(CONFIG.PortfolioImages) && CONFIG.PortfolioImages.length > 0) {
             portfolioImages.length = 0;
             CONFIG.PortfolioImages.forEach(img => portfolioImages.push(img));
         }
         
+        // Vykreslíme filtry a produkty (tím se naplní shop skutečným obsahem)
         renderFilters();
-        applyFilters();
-        handleHashScroll();
-        initInfiniteScroll();
+        applyFilters(); 
         
-        // ... zbytek kódu ...
+        // Okamžitě zkusíme odscrolovat na produkt z odkazu
+        handleHashScroll();
+        
+        // Inicializace nekonečného scrollu
+        initInfiniteScroll();
         
     } catch (error) {
         console.error("Chyba při inicializaci produktů:", error);
+        if (shopContainer) {
+            shopContainer.innerHTML = "<p style='text-align:center; padding:50px;'>Omlouváme se, nepodařilo se načíst produkty. Zkuste prosím stránku obnovit.</p>";
+        }
     }
     
+    // Finalizace rozhraní
     renderCart();
-    setTimeout(() => {
-    handleHashScroll();
-}, 3000);
     updateCartBadge();
+
+    // Pojistka pro handleHashScroll (kdyby se obrázky načítaly pomaleji a posunuly obsah)
+    setTimeout(() => {
+        handleHashScroll();
+    }, 500); // 500ms stačí, 3000ms bylo moc
 }
 
 document.addEventListener('DOMContentLoaded', () => {
