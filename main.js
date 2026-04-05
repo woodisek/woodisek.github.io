@@ -675,45 +675,53 @@ let blogScrollAttempts = 0;
 const MAX_BLOG_SCROLL_ATTEMPTS = 10;
 
 function handleHashScroll() {
+    // 1. Zjistíme, jestli URL obsahuje hash (např. #LG17)
     const hash = window.location.hash.substring(1);
-    if (!hash || ['blog', 'about'].includes(hash)) return;
+    if (!hash) return;
 
-    const performScroll = () => {
-        const target = document.getElementById(hash);
-        if (target) {
-            const offset = 100;
-            const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
-            window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
-            target.classList.add('section-highlight');
-            setTimeout(() => target.classList.remove('section-highlight'), 2000);
+    // Funkce, která zkusí najít produkt a odscrollovat na něj
+    const tryScroll = () => {
+        const targetEl = document.getElementById(hash);
+        if (targetEl) {
+            // Element existuje! Odscrolujeme na něj plynule na střed obrazovky
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Vizuální efekt: Produkt na 2 vteřiny barevně zvýrazníme, ať je hned vidět
+            const originalShadow = targetEl.style.boxShadow;
+            targetEl.style.transition = "box-shadow 0.5s ease";
+            targetEl.style.boxShadow = "0 0 20px var(--accent)";
+            setTimeout(() => targetEl.style.boxShadow = originalShadow, 2000);
+            
             return true;
         }
         return false;
     };
 
-    // 1. POKUS: Je produkt už na stránce?
-    if (performScroll()) return;
+    // 2. Zkusíme to hned. Třeba je produkt hned v první načtené várce.
+    if (tryScroll()) return;
 
-    // 2. POKUS: Produkt tu není. Najdeme ho v datech a vložíme ho na začátek!
-    console.log("🔍 Produkt nenalezen v DOMu, vynucuji zobrazení...");
+    // 3. Pokud produkt v DOMu není, donutíme infinite scroll ho načíst
+    let attempts = 0;
+    const maxAttempts = 40; // Pojistka, ať to neběží do nekonečna (např. když je odkaz neplatný)
     
-    if (typeof allProducts !== 'undefined' && allProducts.length > 0) {
-        const productData = allProducts.find(p => p.id === hash);
+    const forceLoadInterval = setInterval(() => {
+        attempts++;
         
-        if (productData) {
-            // Resetujeme filtry a limit, aby se mohl vykreslit
-            window.currentCategory = 'Vše'; 
-            
-            // TADY JE TEN TRIK: Zavoláme render se všemi produkty
-            // Tím se v HTML vytvoří úplně všechno a ID bude existovat.
-            if (typeof renderProducts === 'function') {
-                renderProducts(allProducts); 
-                
-                // Teď už tam je, tak srolujeme
-                setTimeout(performScroll, 200);
-            }
+        // Fiktivně odskrolujeme na spodek stránky – to by mělo spustit tvé načítání dalších produktů
+        window.scrollTo(0, document.body.scrollHeight);
+        
+        // Zkusíme znovu najít náš produkt
+        if (tryScroll()) {
+            // Našli jsme ho! Zastavíme interval.
+            clearInterval(forceLoadInterval);
+        } else if (attempts >= maxAttempts) {
+            // Nenašli jsme ho ani po mnoha pokusech (neexistuje, nebo je vyprodaný a schovaný)
+            clearInterval(forceLoadInterval);
+            console.warn(`Produkt s ID ${hash} nebyl nalezen.`);
+            // Vrátime uživatele zpět nahoru
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-    }
+    }, 200); // Kontrolujeme a scrollujeme každých 200 ms
 }
 
 // ============================================================
