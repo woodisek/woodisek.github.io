@@ -409,7 +409,7 @@ export function initGlobalSwipeDetection(switchCategoryCallback) {
         const touch = e.changedTouches[0];
         const diffX = globalTouchStartX - touch.clientX;
         const diffY = globalTouchStartY - touch.clientY;
-        const SWIPE_THRESHOLD = 300;
+        const SWIPE_THRESHOLD = 50;
         
         if (startedOnFilters) {
             startedOnFilters = false;
