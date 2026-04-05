@@ -25,6 +25,7 @@ body.light-mode {
     margin: 0;
     padding: 0;
     transition: background 0.3s, color 0.3s, border-color 0.3s;
+    margin-bottom: 15px;
 }
 html { scroll-behavior: smooth; }
 body {
