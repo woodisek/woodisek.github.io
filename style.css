@@ -25,13 +25,12 @@ body.light-mode {
     margin: 0;
     padding: 0;
     transition: background 0.3s, color 0.3s, border-color 0.3s;
-    margin-bottom: 15px;
 }
 html { scroll-behavior: smooth; }
 body {
     font-family: 'Inter', sans-serif;
     background: var(--bg);
-    color: #8b5a2b;
+    color: var(--text);
     padding: 10px;
     min-height: 100dvh;
     overflow-x: hidden;
@@ -1520,4 +1519,44 @@ body.maintenance-active {
 #custom-wa-btn,
 div:has(> #custom-wa-btn) {
     display: none !important;
+}
+/* OPRAVY PRO DESKTOP */
+@media (min-width: 1024px) {
+    body {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+    #shop {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 24px;
+    }
+    
+    .header-top,
+    .search-container,
+    #filters,
+    #shop {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .product-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+}
+
+/* Odstranění zbytečných mezer */
+div, section, article, p, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0;
+}
+
+.product-card {
+    margin-bottom: 0;
 }
