@@ -80,7 +80,7 @@ function initChat() {
     // Úvodní zpráva
     const welcomeMsg = document.createElement('div');
     welcomeMsg.className = 'msg msg-system';
-    welcomeMsg.innerHTML = `👋 <b>Ahoj! Jsem Woodisek</b><br><br>Rád ti pomohu s objednávkou, dopravou nebo čímkoli dalším. Vyber si téma nebo napiš vlastní otázku! 🪵✨`;
+    welcomeMsg.innerHTML = `👋 <b>Ahoj! Jsem Woodisek</b><br><br>Rád ti pomohu s objednávkou, dopravou nebo čímkoli dalším. Vyber si téma nebo napiš vlastní otázku! 🪵✨<br><br><span style="font-size: 12px; color: var(--text-dim);">📊 K dispozici máš 2 otázky za minutu a celkem 5 za den. Tlačítka se nepočítají 😉</span>`;
     chatBody.appendChild(welcomeMsg);
     
     // RYCHLÁ TLAČÍTKA (lokální odpovědi)
