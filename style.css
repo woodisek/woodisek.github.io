@@ -1391,7 +1391,7 @@ body.maintenance-active {
     backdrop-filter: blur(4px);
     
     /* 🔥 PULZOVÁNÍ PRO VŠECHNA TLAČÍTKA */
-    animation: chatBtnPulse 2s ease-in-out infinite;
+    animation: chatBtnPulse 3s ease-in-out infinite;
 }
 
 /* EFEKT PŘI HOVERU (myš) */
@@ -1443,7 +1443,7 @@ body.maintenance-active {
 
 /* POSTUPNÉ ROZJETÍ PŘI NAČTENÍ */
 .quick-questions-container .chat-opt-btn {
-    animation: chatBtnFadeIn 0.3s ease backwards, chatBtnPulse 2s ease-in-out infinite;
+    animation: chatBtnFadeIn 0.3s ease backwards, chatBtnPulse 5s ease-in-out infinite;
 }
 
 .quick-questions-container .chat-opt-btn:nth-child(1) { animation-delay: 0.02s, 0s; }
