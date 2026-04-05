@@ -24,7 +24,7 @@ const localAnswers = {
 };
 
 // Apps Script URL
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzDt4zWT7cFf099OcQq_nC_O9DnU_uQsgUk341GzShff52bwnx9d_x435Uiu8yhx4g/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwitfbzidCrW-F8x8104QfPrLB37r8AqKpdmJCaS2gKeiGZYX90cF0-YuIhhG0nO3I/exec";
 
 // Stav chatu
 let chatInitialized = false;
@@ -38,6 +38,25 @@ function getUserId() {
   }
   return userId;
 }
+// ============================================================
+// TESTOVÁNÍ RATE LIMITU (bez AI)
+// ============================================================
+function testRateLimit() {
+  const userId = getUserId();
+  const callbackName = `test_${Date.now()}`;
+  
+  window[callbackName] = function(response) {
+    console.log("📊 Výsledek testu:", response);
+    alert(response.steps);
+    delete window[callbackName];
+  };
+  
+  const script = document.createElement('script');
+  script.src = `${APPS_SCRIPT_URL}?callback=${callbackName}&userId=${userId}`;
+  document.body.appendChild(script);
+}
+
+
 
 // ============================================================
 // PŘEPNUTÍ PANELU CHATU
