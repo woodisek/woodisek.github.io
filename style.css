@@ -1560,3 +1560,16 @@ div, section, article, p, h1, h2, h3, h4, h5, h6 {
 .product-card {
     margin-bottom: 0;
 }
+/* Nejlehčí animace pro telefon - POUZE transform */
+.product-tag {
+    animation: tagBreathing 4s ease-in-out infinite;
+}
+
+@keyframes tagBreathing {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
