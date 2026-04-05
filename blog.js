@@ -118,7 +118,7 @@ function createSliderHTML(postId, images, currentIndex = 0) {
                     <button class="nav-btn btn-next" onclick="window.navigateBlogSlider('${postId}', 1, event)">›</button>
                     <div class="cnt-tag" id="blog-ct-${postId}">${currentIndex + 1} / ${images.length}</div>
                 ` : ''}
-                <button class="share-blog-btn" onclick="window.shareBlogPost('${postId}', event)" title="Sdílet">🔗</button>
+                
             </div>
         </div>
     `;
@@ -386,7 +386,7 @@ export function renderBlogPosts(containerId = 'blog-container') {
             html += `
     <div class="blog-card" data-id="${post.id}" onclick="window.openBlogModalOnCard('${post.id}', event)">
                     <div class="blog-video" style="position: relative;">
-                        <button class="share-blog-btn" onclick="window.shareBlogPost('${post.id}', event)" title="Sdílet">🔗</button>
+                        
                         <iframe 
                             src="${embedUrl}" 
                             frameborder="0" 
