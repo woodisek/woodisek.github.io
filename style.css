@@ -496,7 +496,6 @@ body:has(#cart-modal.open) #chat-toggle-btn { opacity: 0.3; filter: blur(2px); p
 .shop-disabled-text { font-size: 14px; color: var(--text-dim); }
 .product-card.disabled-shop { grid-column: 1 / -1; display: flex; align-items: center; justify-content: center; min-height: 300px; cursor: default; }
 .shop-closed-animation, .shop-closed-icon { animation: woodGentlePulse 3s ease-in-out infinite, woodFloat 4s ease-in-out infinite; }
-.shop-closed-title { animation: woodSparkle 3s ease-in-out infinite; }
 #gal img { max-width: 90%; max-height: 85%; object-fit: contain; cursor: zoom-out; transition: opacity 0.3s; pointer-events: none; will-change: transform; }
 .gal-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 30px; cursor: pointer; z-index: 20001; display: flex; align-items: center; justify-content: center; }
 .gal-prev { left: 20px; }
@@ -1513,4 +1512,11 @@ body.maintenance-active {
         box-shadow: 0 0 0 15px rgba(122, 78, 45, 0);
         filter: drop-shadow(0 0 8px rgba(122, 78, 45, 0.5));
     }
+}
+/* SCHOVÁNÍ ZAKÁZKOVÉ TVORBY */
+#custom-title,
+#custom-text,
+#custom-wa-btn,
+div:has(> #custom-wa-btn) {
+    display: none !important;
 }
