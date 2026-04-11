@@ -1,0 +1,24 @@
+{
+  "name": "Woodisek",
+  "short_name": "Woodisek",
+  "description": "Ručně vyráběné dřevěné produkty",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0d0d0d",
+  "theme_color": "#7a4e2d",
+  "icons": [
+    {
+      "src": "https://i.postimg.cc/pXvtsQWx/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://i.postimg.cc/kXCdTNJq/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
