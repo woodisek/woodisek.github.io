@@ -19,7 +19,7 @@ import './chat.js';
 import { loadProductRating, clearRatingCache } from './rating.js';
 
 // ZMĚNA VERZE WEBU zde + main.js?v=
-const APP_VERSION = '20250412';  // ← TOTO ČÍSLO BUDEŠ MĚNIT
+const APP_VERSION = '20250418';  // ← TOTO ČÍSLO BUDEŠ MĚNIT
 
 const storedVersion = localStorage.getItem('app_version');
 
