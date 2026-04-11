@@ -540,5 +540,48 @@ function togglePassword(inputId, button) {
 })();
 </script>
 
+
+
+    <script>
+(function() {
+    // Detekce mobilu v landscape a vypnutí animací
+    function disableAnimationsOnMobileLandscape() {
+        if (window.innerWidth <= 768 && window.matchMedia("(orientation: landscape)").matches) {
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.style.animation = 'none';
+                card.style.animationDelay = '0s';
+                card.style.opacity = '1';
+                card.style.transform = 'none';
+            });
+        }
+    }
+    
+    // Spustit hned
+    disableAnimationsOnMobileLandscape();
+    
+    // Sledovat změny (když se přidají nové karty)
+    const observer = new MutationObserver(function() {
+        disableAnimationsOnMobileLandscape();
+    });
+    
+    const shop = document.getElementById('shop');
+    if (shop) {
+        observer.observe(shop, { childList: true, subtree: true });
+    }
+    
+    // Sledovat změnu orientace obrazovky
+    window.addEventListener('resize', function() {
+        disableAnimationsOnMobileLandscape();
+    });
+    
+    window.addEventListener('orientationchange', function() {
+        setTimeout(disableAnimationsOnMobileLandscape, 100);
+    });
+})();
+</script>
+
+
+
+    
 </body>
 </html>
