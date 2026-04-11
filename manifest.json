@@ -9,13 +9,13 @@
   "theme_color": "#7a4e2d",
   "icons": [
     {
-      "src": "https://i.postimg.cc/pTTx6Mnr/apple-touch-icon-180x180.png",
+      "src": "https://i.postimg.cc/xCCY4Vb1/web_app_manifest_192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "https://i.postimg.cc/xCCY4VbC/web-app-manifest-512x512.png",
+      "src": "https://i.postimg.cc/xCCY4VbC/web_app_manifest_512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
