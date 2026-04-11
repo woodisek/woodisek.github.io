@@ -1,4 +1,4 @@
-const CACHE_NAME = 'woodisek-pwa-v4';
+const CACHE_NAME = 'woodisek-pwa-v18';
 
 // Při instalaci - jen otevře cache, nic nestahuje
 self.addEventListener('install', event => {
