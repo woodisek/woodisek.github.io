@@ -335,47 +335,47 @@
 // RESET HESLA - DETAILNÍ LOGOVÁNÍ --- ZMĚNA VERZE WEBU
 // ============================================
 (function() {
-    console.log('[RESET] 1. Skript spuštěn');
+    //console.log('[RESET] 1. Skript spuštěn');
     
     const urlParams = new URLSearchParams(window.location.search);
     const resetToken = urlParams.get('reset');
     
-    console.log('[RESET] 2. URL:', window.location.href);
-    console.log('[RESET] 3. Token z URL:', resetToken);
+    //console.log('[RESET] 2. URL:', window.location.href);
+    //console.log('[RESET] 3. Token z URL:', resetToken);
     
     if (resetToken) {
-        console.log('[RESET] 4. ✅ Token nalezen, ukládám do localStorage');
+        //console.log('[RESET] 4. ✅ Token nalezen, ukládám do localStorage');
         localStorage.setItem('woodisek_reset_token', resetToken);
         
-        console.log('[RESET] 5. Nastavuji window.skipNormalInit = true');
+        //console.log('[RESET] 5. Nastavuji window.skipNormalInit = true');
         window.skipNormalInit = true;
         
-        console.log('[RESET] 6. Čekám na DOMContentLoaded');
+        //console.log('[RESET] 6. Čekám na DOMContentLoaded');
         window.addEventListener('DOMContentLoaded', function() {
-            console.log('[RESET] 7. DOMContentLoaded nastalo');
+            //console.log('[RESET] 7. DOMContentLoaded nastalo');
             
             let attempts = 0;
             const maxAttempts = 25;
             
             const checkFunction = setInterval(function() {
                 attempts++;
-                console.log('[RESET] 8. Pokus č.' + attempts + ' - kontrola window.showResetPasswordForm');
+                //console.log('[RESET] 8. Pokus č.' + attempts + ' - kontrola window.showResetPasswordForm');
                 
 if (typeof window.showResetPasswordForm === 'function') {
     clearInterval(checkFunction);
-    console.log('[RESET] 9. ✅ Funkce nalezena, zobrazuji reset formulář');
+    //console.log('[RESET] 9. ✅ Funkce nalezena, zobrazuji reset formulář');
     window.showResetPasswordForm(resetToken);
     // Token NEMAŽEME - smaže se až po úspěšné změně hesla
-    console.log('[RESET] 10. Token ponechán v localStorage pro submit');
+    //console.log('[RESET] 10. Token ponechán v localStorage pro submit');
 } else if (attempts >= maxAttempts) {
                     clearInterval(checkFunction);
-                    console.log('[RESET] 9. ❌ Funkce nenalezena po ' + maxAttempts + ' pokusech');
-                    console.log('[RESET] typeof window.showResetPasswordForm:', typeof window.showResetPasswordForm);
+                    //console.log('[RESET] 9. ❌ Funkce nenalezena po ' + maxAttempts + ' pokusech');
+                    //console.log('[RESET] typeof window.showResetPasswordForm:', typeof window.showResetPasswordForm);
                 }
             }, 200);
         });
     } else {
-        console.log('[RESET] 4. ❌ Žádný token v URL, reset nebude spuštěn');
+        //console.log('[RESET] 4. ❌ Žádný token v URL, reset nebude spuštěn');
     }
 })();
 </script>
@@ -412,7 +412,7 @@ function togglePassword(inputId, button) {
 <script>
 // JEDNODUCHÝ POSUVNÍK CENY - OPRAVA
 (function() {
-    console.log('Spouštím posuvník...');
+    //console.log('Spouštím posuvník...');
     
     // Počkáme na načtení stránky a produktů
     setTimeout(async function() {
@@ -428,12 +428,12 @@ function togglePassword(inputId, button) {
                 attempts++;
             }
         } catch(e) {
-            console.error('Chyba načítání produktů:', e);
+            //console.error('Chyba načítání produktů:', e);
             return;
         }
         
         if (!products || products.length === 0) {
-            console.log('Žádné produkty');
+            //console.log('Žádné produkty');
             return;
         }
         
@@ -449,7 +449,7 @@ function togglePassword(inputId, button) {
         if (minPrice === Infinity) minPrice = 0;
         if (maxPrice === 0) maxPrice = 5000;
         
-        console.log(`Min cena: ${minPrice}, Max cena: ${maxPrice}`);
+        //console.log(`Min cena: ${minPrice}, Max cena: ${maxPrice}`);
         
         // Nastavení posuvníků
         const minSlider = document.getElementById('price-min-slider');
@@ -461,7 +461,7 @@ function togglePassword(inputId, button) {
         const maxHidden = document.getElementById('max-price');
         
         if (!minSlider || !maxSlider) {
-            console.log('Posuvníky nenalezeny');
+            //console.log('Posuvníky nenalezeny');
             return;
         }
         
@@ -535,7 +535,7 @@ function togglePassword(inputId, button) {
             window.applyAllFilters();
         }
         
-        console.log('Posuvník aktivní!');
+        //console.log('Posuvník aktivní!');
     }, 500);
 })();
 </script>
