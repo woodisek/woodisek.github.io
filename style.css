@@ -4422,3 +4422,66 @@ body:not(.light-mode) .orders-loader-overlay {
 #price-min-slider {
     z-index: 1;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ======================================== */
+/* ÚPLNÉ VYPNUTÍ ANIMACÍ PRO MOBIL NA ŠÍŘKU (LANDSCAPE) */
+/* ======================================== */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    
+    /* Vypnutí slideUpModern animace */
+    .product-card {
+        animation: none !important;
+        animation-delay: 0s !important;
+        transform: none !important;
+        opacity: 1 !important;
+        transition: none !important;
+    }
+    
+    /* Vypnutí všech CSS animací */
+    .product-card * {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+    }
+    
+    /* Vypnutí slideUpModern pro všechny prvky */
+    [class*="slideUp"],
+    [class*="fadeIn"],
+    [class*="animate"] {
+        animation: none !important;
+    }
+    
+    /* Vynucené nastavení opacity na 1 */
+    .product-card,
+    .product-card .main-img,
+    .product-card .p-content {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    /* Vypnutí zpoždění animací */
+    .product-card {
+        animation-delay: 0s !important;
+        --card-order: 0 !important;
+    }
+}
