@@ -4441,3 +4441,74 @@ body:not(.light-mode) .orders-loader-overlay {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* VYPNUTÍ ANIMACÍ PRO MOBIL V LANDSCAPE ORIENTACI */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    /* Všechny animace na kartách produktů */
+    .product-card,
+    .product-card *,
+    .product-card:hover,
+    .product-card:active,
+    .product-card:focus {
+        transition: none !important;
+        transform: none !important;
+        animation: none !important;
+        scale: 1 !important;
+    }
+    
+    /* Zrušení hover efektů */
+    .product-card:hover {
+        transform: none !important;
+        box-shadow: none !important;
+        transition: none !important;
+    }
+    
+    /* Zrušení scale/zoom efektů */
+    .product-card:active {
+        transform: none !important;
+        scale: 1 !important;
+    }
+    
+    
+    .product-card .btn,
+    .product-card button,
+    .product-card .btn-cart-small,
+    .product-card .btn-offer-small {
+        transition: none !important;
+        transform: none !important;
+        animation: none !important;
+    }
+    
+    /* Zrušení pulse/loading animací */
+    .btn-pulse,
+    .pulse-animation {
+        animation: none !important;
+    }
+}
