@@ -86,7 +86,7 @@ function initChat() {
     inputContainer.className = 'chat-input-container';
     inputContainer.style.cssText = 'display: flex; gap: 8px; margin-top: 15px; padding-top: 10px; border-top: 1px solid var(--border);';
     inputContainer.innerHTML = `
-        <input type="text" id="chat-input-field" class="chat-input-field" placeholder="Zeptej se AI..." style="flex: 1; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-family: inherit; font-size: 13px; outline: none;">
+        <input type="text" id="chat-input-field" class="chat-input-field" placeholder="Zeptej se..." style="flex: 1; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-family: inherit; font-size: 13px; outline: none;">
         <button id="chat-send-btn" class="chat-send-btn" style="background: var(--accent); color: white; border: none; border-radius: 10px; width: 42px; height: 42px; cursor: pointer; font-size: 18px;">➤</button>
     `;
     optionsContainer.appendChild(inputContainer);
