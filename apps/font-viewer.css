@@ -1,0 +1,451 @@
+/* ============================================
+   FONT VIEWER - kompletní styl (.font-viewer)
+   ============================================ */
+
+.font-viewer {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 20px;
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+/* === RESPONSIVE - mobil === */
+@media (max-width: 600px) {
+    .font-viewer {
+        padding: 16px;
+        border-radius: 16px;
+    }
+}
+
+/* === HLAVIČKA === */
+.font-viewer .fv-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.font-viewer .fv-header .fv-icon {
+    font-size: 48px;
+    background: var(--bg);
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+}
+
+.font-viewer .fv-header h3 {
+    margin: 0 0 4px 0;
+    color: var(--accent);
+    font-size: 1.5rem;
+}
+
+.font-viewer .fv-header p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+/* === SEKCE === */
+.font-viewer .fv-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.font-viewer .fv-label {
+    font-weight: 500;
+    color: var(--text);
+    font-size: 0.85rem;
+    text-align: left;
+}
+
+/* === TEXTAREA === */
+.font-viewer .fv-textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 14px;
+    color: var(--text);
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    outline: none;
+    resize: vertical;
+}
+
+.font-viewer .fv-textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(122, 78, 45, 0.2);
+}
+
+/* === ŘÁDEK (SLIDER + TLAČÍTKA STYLŮ) === */
+.font-viewer .fv-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.font-viewer .fv-size-wrap {
+    flex: 2;
+    min-width: 150px;
+}
+
+.font-viewer .fv-range {
+    width: 100%;
+    height: 6px;
+    -webkit-appearance: none;
+    background: var(--border);
+    border-radius: 10px;
+    outline: none;
+}
+
+.font-viewer .fv-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--accent);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.font-viewer .fv-range::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+/* Firefox */
+.font-viewer .fv-range::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: var(--accent);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+.font-viewer .fv-style {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.font-viewer .fv-style-btn {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.font-viewer .fv-style-btn:hover {
+    background: var(--border);
+    transform: translateY(-2px);
+}
+
+.font-viewer .fv-style-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+/* === KATEGORIE === */
+.font-viewer .fv-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.font-viewer .fv-cat-btn {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text);
+    white-space: nowrap;
+}
+
+.font-viewer .fv-cat-btn:hover {
+    background: var(--border);
+    transform: translateY(-2px);
+}
+
+.font-viewer .fv-cat-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+/* === FONT SELECTOR - CELÁ ŠÍŘKA === */
+.font-viewer .fv-font-selector {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    align-items: center;
+    width: 100%;
+}
+
+.font-viewer .fv-select {
+    flex: 1 1 auto;  /* 🔥 DŮLEŽITÉ: roztáhne se */
+    min-width: 0;     /* 🔥 zabrání přetečení */
+    width: 100%;      /* 🔥 zajistí plnou šířku */
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px;
+    color: var(--text);
+    font-size: 0.9rem;
+    outline: none;
+    max-height: 200px;
+}
+
+.font-viewer .fv-select option {
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.font-viewer .fv-select option:hover {
+    background: var(--accent);
+    color: white;
+}
+
+.font-viewer .fv-nav-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-shrink: 0;  /* 🔥 tlačítka se nezmenšují */
+}
+
+.font-viewer .fv-nav-btn {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.font-viewer .fv-nav-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    transform: scale(0.95);
+}
+
+.font-viewer .fv-loading {
+    text-align: center;
+    padding: 8px;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    background: var(--bg);
+    border-radius: 8px;
+    margin-top: 6px;
+}
+
+/* === NÁHLED FONTU === */
+.font-viewer .fv-preview {
+    background: var(--bg);
+    border-radius: 16px;
+    padding: 30px;
+    margin: 20px 0;
+    text-align: center;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+}
+
+.font-viewer .fv-preview-text {
+    word-break: break-word;
+    line-height: 1.4;
+    color: var(--accent);
+    transition: all 0.3s ease;
+}
+
+/* === INVERZNÍ REŽIM - hnědé pozadí, tmavý text === */
+.font-viewer .fv-preview.inverted {
+    background: var(--accent);
+    border-color: #5a3a1a;
+}
+
+.font-viewer .fv-preview.inverted .fv-preview-text {
+    color: #1a0a00 !important;
+    text-shadow: 
+        1px 1px 1px rgba(255, 255, 255, 0.2),
+        -1px -1px 1px rgba(0, 0, 0, 0.5);
+}
+
+/* === HLAVNÍ TLAČÍTKO === */
+.font-viewer .fv-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.font-viewer .fv-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-family: inherit;
+}
+
+.font-viewer .fv-btn-primary {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.font-viewer .fv-btn-primary:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.font-viewer .fv-btn-primary:active {
+    transform: translateY(1px);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 550px) {
+    .font-viewer .fv-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .font-viewer .fv-style {
+        justify-content: center;
+    }
+    
+    .font-viewer .fv-font-selector {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .font-viewer .fv-nav-buttons {
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 8px;
+    }
+    
+    .font-viewer .fv-nav-btn {
+        width: 60px;
+    }
+    
+    .font-viewer .fv-select {
+        width: 100%;
+    }
+    
+    .font-viewer .fv-categories {
+        justify-content: center;
+    }
+    
+    .font-viewer .fv-preview {
+        padding: 20px 15px;
+    }
+}
+
+/* === SCROLLBAR (posuvníky) === */
+.font-viewer .fv-select::-webkit-scrollbar {
+    width: 8px;
+}
+
+.font-viewer .fv-select::-webkit-scrollbar-track {
+    background: var(--bg);
+    border-radius: 10px;
+}
+
+.font-viewer .fv-select::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+.font-viewer .fv-select::-webkit-scrollbar-thumb:hover {
+    filter: brightness(0.85);
+}
+
+.font-viewer .fv-textarea::-webkit-scrollbar {
+    width: 8px;
+}
+
+.font-viewer .fv-textarea::-webkit-scrollbar-track {
+    background: var(--bg);
+    border-radius: 10px;
+}
+
+.font-viewer .fv-textarea::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+/* === LIGHT MODE === */
+body.light-mode .font-viewer .fv-textarea,
+body.light-mode .font-viewer .fv-select,
+body.light-mode .font-viewer .fv-preview,
+body.light-mode .font-viewer .fv-style-btn,
+body.light-mode .font-viewer .fv-nav-btn,
+body.light-mode .font-viewer .fv-cat-btn {
+    background: var(--bg);
+}
+
+body.light-mode .font-viewer .fv-preview.inverted {
+    background: var(--accent);
+}
+
+body.light-mode .font-viewer .fv-preview.inverted .fv-preview-text {
+    color: #1a0a00 !important;
+}
+
+body.light-mode .font-viewer .fv-style-btn.active {
+    background: var(--accent);
+    color: white;
+}
+
+body.light-mode .font-viewer .fv-cat-btn.active {
+    background: var(--accent);
+    color: white;
+}
+
+body.light-mode .font-viewer .fv-nav-btn:hover {
+    background: var(--accent);
+    color: white;
+}

@@ -1,0 +1,467 @@
+/* ============================================
+   FUEL CALCULATOR - lokální styl (.fuel-calculator)
+   ============================================ */
+
+.fuel-calculator {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 20px;
+    padding: 24px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+/* === RESPONSIVE - mobil === */
+@media (max-width: 600px) {
+    .fuel-calculator {
+        padding: 16px;
+        border-radius: 16px;
+    }
+}
+
+/* === HLAVIČKA === */
+.fuel-calculator .fc-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.fuel-calculator .fc-header .fc-icon {
+    font-size: 48px;
+    background: var(--bg);
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+}
+
+.fuel-calculator .fc-header h3 {
+    margin: 0 0 4px 0;
+    color: var(--accent);
+    font-size: 1.5rem;
+}
+
+.fuel-calculator .fc-header p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+/* === FORMULÁŘ === */
+.fuel-calculator .fc-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.fuel-calculator .fc-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.fuel-calculator .fc-label {
+    font-weight: 500;
+    color: var(--text);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* === INPUT GROUP (input + select) === */
+.fuel-calculator .fc-input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.fuel-calculator .fc-input {
+    flex: 2;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: var(--text);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    outline: none;
+    text-align: center;
+}
+
+.fuel-calculator .fc-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(122, 78, 45, 0.2);
+}
+
+.fuel-calculator .fc-input:hover:not(:focus) {
+    border-color: var(--text-dim);
+}
+
+/* === SELECT === */
+.fuel-calculator .fc-select {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 12px;
+    color: var(--text);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+    text-align: center;
+}
+
+.fuel-calculator .fc-select:hover {
+    border-color: var(--accent);
+}
+
+.fuel-calculator .fc-select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(122, 78, 45, 0.2);
+}
+
+/* === POČET CESTUJÍCÍCH (stepper) === */
+.fuel-calculator .fc-passenger-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.fuel-calculator .fc-stepper-btn {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fuel-calculator .fc-stepper-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    transform: scale(0.95);
+}
+
+.fuel-calculator .fc-passenger-input {
+    width: 80px;
+    text-align: center;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 8px;
+    color: var(--text);
+    font-size: 1.1rem;
+    font-weight: 600;
+    outline: none;
+}
+
+.fuel-calculator .fc-passenger-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(122, 78, 45, 0.2);
+}
+
+/* === TLAČÍTKA === */
+.fuel-calculator .fc-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.fuel-calculator .fc-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-family: inherit;
+}
+
+.fuel-calculator .fc-btn-primary {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.fuel-calculator .fc-btn-primary:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.fuel-calculator .fc-btn-primary:active {
+    transform: translateY(1px);
+}
+
+.fuel-calculator .fc-btn-secondary {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.fuel-calculator .fc-btn-secondary:hover {
+    background: var(--border);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.fuel-calculator .fc-btn-secondary:active {
+    transform: translateY(1px);
+}
+
+/* === RESPONSIVE TLAČÍTKA NA MOBILU === */
+@media (max-width: 480px) {
+    .fuel-calculator .fc-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .fuel-calculator .fc-btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
+}
+
+/* === VÝSLEDKY === */
+.fuel-calculator .fc-results {
+    margin-top: 24px;
+    animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fuel-calculator .fc-results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.fuel-calculator .fc-results-header span {
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 1rem;
+}
+
+.fuel-calculator .fc-small-btn {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text);
+}
+
+.fuel-calculator .fc-small-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    transform: scale(0.95);
+}
+
+/* === RESULTS GRID === */
+.fuel-calculator .fc-results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+}
+
+.fuel-calculator .fc-result-card {
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: all 0.2s ease;
+    border: 1px solid var(--border);
+    text-align: left;
+}
+
+.fuel-calculator .fc-result-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.fuel-calculator .fc-result-icon {
+    font-size: 2rem;
+    background: var(--card);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.fuel-calculator .fc-result-content {
+    flex: 1;
+}
+
+.fuel-calculator .fc-result-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.2;
+}
+
+.fuel-calculator .fc-result-label {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-top: 4px;
+}
+
+/* === RESPONSIVE RESULTS === */
+@media (max-width: 600px) {
+    .fuel-calculator .fc-results-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .fuel-calculator .fc-result-card {
+        padding: 12px;
+    }
+    
+    .fuel-calculator .fc-result-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+    
+    .fuel-calculator .fc-result-value {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .fuel-calculator .fc-input-group {
+        flex-direction: column;
+    }
+    
+    .fuel-calculator .fc-input,
+    .fuel-calculator .fc-select {
+        width: 100%;
+    }
+    
+    .fuel-calculator .fc-stepper-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 1.2rem;
+    }
+    
+    .fuel-calculator .fc-passenger-input {
+        width: 60px;
+    }
+}
+
+/* === CUSTOM SCROLLBAR === */
+.fuel-calculator ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.fuel-calculator ::-webkit-scrollbar-track {
+    background: var(--bg);
+    border-radius: 10px;
+}
+
+.fuel-calculator ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 10px;
+}
+
+.fuel-calculator ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* === LIGHT MODE === */
+body.light-mode .fuel-calculator .fc-input,
+body.light-mode .fuel-calculator .fc-select,
+body.light-mode .fuel-calculator .fc-passenger-input,
+body.light-mode .fuel-calculator .fc-result-card {
+    background: var(--bg);
+}
+
+body.light-mode .fuel-calculator .fc-btn-secondary {
+    background: var(--bg);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+body.light-mode .fuel-calculator .fc-btn-secondary:hover {
+    background: #e0d6cc;
+    border-color: var(--accent);
+}
+
+body.light-mode .fuel-calculator .fc-stepper-btn {
+    background: var(--bg);
+}
+
+body.light-mode .fuel-calculator .fc-stepper-btn:hover {
+    background: var(--accent);
+    color: white;
+}
+
+body.light-mode .fuel-calculator .fc-small-btn {
+    background: var(--bg);
+}
+
+body.light-mode .fuel-calculator .fc-small-btn:hover {
+    background: var(--accent);
+    color: white;
+}
+
+body.light-mode .fuel-calculator .fc-result-value {
+    color: var(--accent);
+}

@@ -1,0 +1,371 @@
+
+
+/* Aplikace - grid */
+#apps-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.app-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.app-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+}
+
+.app-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.app-name {
+    color: var(--accent);
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.app-desc {
+    color: var(--text-dim);
+    font-size: 13px;
+}
+
+/* Modální okno aplikace */
+.app-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    backdrop-filter: blur(4px);
+}
+
+.app-modal-content {
+    background: var(--card);
+    border-radius: 24px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.app-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.app-modal-header h3 {
+    margin: 0;
+    color: var(--accent);
+}
+
+.app-modal-close {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--text-dim);
+    padding: 0 8px;
+}
+
+.app-modal-close:hover {
+    color: var(--accent);
+}
+
+.app-modal-body {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 40px auto;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.error {
+    color: #dc2626;
+    text-align: center;
+    padding: 40px;
+}
+
+.apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+#apps-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    display: block;
+}
+
+/* Toast pro mobil */
+@media (max-width: 768px) {
+    #toast-container {
+        padding: 8px 16px;
+        font-size: 12px;
+        bottom: 20px;
+        white-space: nowrap;
+    }
+    
+    #toast-icon {
+        font-size: 14px;
+    }
+    
+    #toast-text {
+        font-size: 12px;
+    }
+}
+/* Fullscreen toggle */
+.app-modal-overlay.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg);
+}
+
+.app-modal-overlay.fullscreen .app-modal-content {
+    width: 100vw;
+    max-width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+}
+
+.app-modal-fullscreen {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--text-dim);
+    padding: 0 8px;
+}
+
+/* Hlavička modalu */
+.app-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.app-modal-header h3 {
+    margin: 0;
+    color: var(--accent);
+}
+
+/* Kontejner pro tlačítka vpravo */
+.app-modal-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* Tlačítko fullscreen */
+.app-modal-fullscreen {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--text-dim);
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.app-modal-fullscreen:hover {
+    background: var(--bg);
+    color: var(--accent);
+}
+
+/* Tlačítko zavřít */
+.app-modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-dim);
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.app-modal-close:hover {
+    background: var(--bg);
+    color: #dc2626;
+}
+
+/* Oprava spinneru v modalu aplikace */
+.app-modal-body .spinner-modern {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: 40px auto;
+}
+
+/* Nebo pokud použiješ .spinner */
+.app-modal-body .spinner {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: 40px auto;
+    display: block;
+}
+
+/* Oprava fullscreen modalu - zajistí viditelnost hlavičky */
+.app-modal-overlay.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg);
+    overflow-y: auto;
+}
+
+.app-modal-overlay.fullscreen .app-modal-content {
+    width: 100vw;
+    max-width: 100vw;
+    min-height: 100vh;
+    height: auto;
+    border-radius: 0;
+    margin: 0;
+}
+
+.app-modal-overlay.fullscreen .app-modal-header {
+    position: sticky;
+    top: 0;
+    background: var(--card);
+    z-index: 100;
+    border-bottom: 1px solid var(--border);
+}
+
+.app-modal-overlay.fullscreen .app-modal-body {
+    padding: 20px;
+    overflow-y: visible;
+}
+
+/* Tlačítka v modalu - jednotný styl jako na webu */
+.app-modal-actions .app-modal-fullscreen,
+.app-modal-actions .app-modal-close {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 18px;
+    color: var(--text);
+}
+
+.app-modal-actions .app-modal-fullscreen:hover,
+.app-modal-actions .app-modal-close:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    transform: scale(0.95);
+}
+
+/* Tlačítko zavřít - červená při hover */
+.app-modal-actions .app-modal-close:hover {
+    background: #dc2626;
+    border-color: #dc2626;
+    color: white;
+}
+
+/* Zakázání horizontálního scrollu na celé stránce ve fullscreen */
+.app-modal-overlay.fullscreen {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* Mezera mezi hlavičkou a kategoriemi ve fullscreen */
+.app-modal-overlay.fullscreen .app-modal-body {
+    padding-top: 30px;
+}
+
+/* Oprava fullscreen - žádný prázdný prostor dole */
+.app-modal-overlay.fullscreen {
+    background: var(--bg);
+    overflow-y: auto;
+}
+
+.app-modal-overlay.fullscreen .app-modal-content {
+    min-height: 100vh;
+    height: auto;
+    background: var(--bg);
+}
+
+.app-modal-overlay.fullscreen .app-modal-body {
+    padding-bottom: 30px;  /* malá mezera dole */
+    background: #ffffff;
+    background: var(--card);
+}
+
+/* Aby se pozadí propisovalo */
+.copy-emoji-app-v2,
+.email-extractor,
+.word-counter-pro {
+    min-height: 100%;
+    background: #ffffff;
+    background: var(--card);
+}
+

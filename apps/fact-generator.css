@@ -1,0 +1,382 @@
+/* ============================================
+   FACT GENERATOR - lokální styl (.fact-generator)
+   ============================================ */
+
+.fact-generator {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 20px;
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+/* === RESPONSIVE - mobil === */
+@media (max-width: 600px) {
+    .fact-generator {
+        padding: 16px;
+        border-radius: 16px;
+    }
+}
+
+/* === HLAVIČKA === */
+.fact-generator .fg-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.fact-generator .fg-header .fg-icon {
+    font-size: 48px;
+    background: var(--bg);
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+}
+
+.fact-generator .fg-header h3 {
+    margin: 0 0 4px 0;
+    color: var(--accent);
+    font-size: 1.5rem;
+}
+
+.fact-generator .fg-header p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+/* === VÝSLEDKOVÁ SEKCE - PŘESUNUTA NAHORU === */
+.fact-generator .fg-result-section {
+    margin-bottom: 24px;
+}
+
+.fact-generator .fg-result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.fact-generator .fg-result-header span {
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 0.85rem;
+}
+
+.fact-generator .fg-small-btn {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text);
+}
+
+.fact-generator .fg-small-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.fact-generator .fg-result {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 20px;
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fact-generator .fg-empty {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+/* === KARTA FAKTU - CENTROVANÁ === */
+.fact-generator .fg-fact-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 16px;
+    width: 100%;
+}
+
+.fact-generator .fg-fact-icon {
+    font-size: 2.5rem;
+    background: var(--card);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+}
+
+.fact-generator .fg-fact-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text);
+    max-width: 95%;
+}
+
+/* === SEKCE === */
+.fact-generator .fg-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.fact-generator .fg-label {
+    font-weight: 500;
+    color: var(--text);
+    font-size: 0.85rem;
+    text-align: left;
+}
+
+/* === KATEGORIE === */
+.fact-generator .fg-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.fact-generator .fg-cat-btn {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: 6px 14px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text);
+}
+
+.fact-generator .fg-cat-btn:hover {
+    background: var(--border);
+    transform: translateY(-2px);
+}
+
+.fact-generator .fg-cat-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+/* === HLAVNÍ TLAČÍTKA === */
+.fact-generator .fg-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.fact-generator .fg-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-family: inherit;
+}
+
+.fact-generator .fg-btn-primary {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.fact-generator .fg-btn-primary:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.fact-generator .fg-btn-secondary {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.fact-generator .fg-btn-secondary:hover {
+    background: var(--border);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.fact-generator .fg-btn-primary:active,
+.fact-generator .fg-btn-secondary:active {
+    transform: translateY(1px);
+}
+
+/* === RESPONSIVE TLAČÍTKA === */
+@media (max-width: 480px) {
+    .fact-generator .fg-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .fact-generator .fg-btn {
+        width: 100%;
+        max-width: 220px;
+        justify-content: center;
+    }
+}
+
+/* === HISTORIE === */
+.fact-generator .fg-details {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    margin: 16px 0;
+}
+
+.fact-generator .fg-details summary {
+    cursor: pointer;
+    color: var(--accent);
+    font-weight: 500;
+    font-size: 0.85rem;
+    user-select: none;
+}
+
+.fact-generator .fg-history {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.fact-generator .fg-empty-history {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+}
+
+.fact-generator .fg-history-item {
+    background: var(--card);
+    border-left: 3px solid var(--accent);
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+}
+
+.fact-generator .fg-history-text {
+    font-size: 0.8rem;
+    color: var(--text);
+    line-height: 1.4;
+}
+
+.fact-generator .fg-history-meta {
+    font-size: 0.6rem;
+    color: var(--text-dim);
+    margin-top: 6px;
+}
+
+.fact-generator .fg-clear-history {
+    margin-top: 8px;
+    width: 100%;
+}
+
+/* === TIP === */
+.fact-generator .fg-tip {
+    background: rgba(122, 78, 45, 0.1);
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-top: 16px;
+    text-align: left;
+}
+
+.fact-generator .fg-tip strong {
+    color: var(--accent);
+}
+
+/* === SCROLLBAR === */
+.fact-generator .fg-history::-webkit-scrollbar {
+    width: 6px;
+}
+
+.fact-generator .fg-history::-webkit-scrollbar-track {
+    background: var(--bg);
+    border-radius: 10px;
+}
+
+.fact-generator .fg-history::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+/* === LIGHT MODE === */
+body.light-mode .fact-generator .fg-cat-btn,
+body.light-mode .fact-generator .fg-result,
+body.light-mode .fact-generator .fg-details,
+body.light-mode .fact-generator .fg-history-item {
+    background: var(--bg);
+}
+
+body.light-mode .fact-generator .fg-btn-secondary {
+    background: var(--bg);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+body.light-mode .fact-generator .fg-btn-secondary:hover {
+    background: #e0d6cc;
+}
+
+body.light-mode .fact-generator .fg-cat-btn.active {
+    background: var(--accent);
+    color: white;
+}
+
+body.light-mode .fact-generator .fg-small-btn:hover {
+    background: var(--accent);
+    color: white;
+}
+.fact-generator {
+    display: flex;
+    flex-direction: column;
+}
+
+.fg-result-section {
+    order: 1;
+}
+
+.fg-section {
+    order: 2;
+}
+
+.fg-buttons {
+    order: 3;
+}

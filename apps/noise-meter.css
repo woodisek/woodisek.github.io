@@ -1,0 +1,260 @@
+/* ============================================
+   NOISE METER - lokální styl (.noise-meter)
+   ============================================ */
+
+.noise-meter {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 20px;
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+/* === RESPONSIVE - mobil === */
+@media (max-width: 600px) {
+    .noise-meter {
+        padding: 16px;
+        border-radius: 16px;
+    }
+}
+
+/* === HLAVIČKA === */
+.noise-meter .nm-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.noise-meter .nm-header .nm-icon {
+    font-size: 48px;
+    background: var(--bg);
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+}
+
+.noise-meter .nm-header h3 {
+    margin: 0 0 4px 0;
+    color: var(--accent);
+    font-size: 1.5rem;
+}
+
+.noise-meter .nm-header p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+/* === HODNOTA HLUKU === */
+.noise-meter .nm-level-display {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.noise-meter .nm-level-value {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+}
+
+.noise-meter .nm-level-unit {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin-top: 4px;
+}
+
+/* === PEAK === */
+.noise-meter .nm-peak {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+}
+
+.noise-meter .nm-peak span {
+    font-weight: 700;
+    color: var(--accent);
+}
+
+/* === GRAF === */
+.noise-meter #nm-graph {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+
+/* === METER (VODOROVNÝ UKAZATEL) === */
+.noise-meter .nm-meter {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    height: 24px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.noise-meter .nm-meter-bar {
+    width: 0%;
+    height: 100%;
+    background: var(--accent);
+    border-radius: 30px;
+    transition: width 0.1s ease;
+}
+
+/* === POPIS HLADINY === */
+.noise-meter .nm-description {
+    text-align: center;
+    padding: 12px;
+    background: var(--bg);
+    border-radius: 12px;
+    font-size: 0.85rem;
+    color: var(--text);
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+}
+
+/* === TLAČÍTKA === */
+.noise-meter .nm-controls {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.noise-meter .nm-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-family: inherit;
+}
+
+.noise-meter .nm-btn-primary {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.noise-meter .nm-btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.noise-meter .nm-btn-secondary {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.noise-meter .nm-btn-secondary:hover:not(:disabled) {
+    background: var(--border);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.noise-meter .nm-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* === RESPONSIVE TLAČÍTKA === */
+@media (max-width: 480px) {
+    .noise-meter .nm-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .noise-meter .nm-btn {
+        width: 100%;
+        max-width: 220px;
+        justify-content: center;
+    }
+}
+
+/* === STATISTIKY === */
+.noise-meter .nm-stats {
+    display: flex;
+    justify-content: space-around;
+    gap: 16px;
+    padding: 16px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    text-align: center;
+}
+
+.noise-meter .nm-stats div {
+    flex: 1;
+}
+
+.noise-meter .nm-stats b {
+    font-size: 1.5rem;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.noise-meter .nm-stats br {
+    display: none;
+}
+
+.noise-meter .nm-stats div {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+}
+
+/* === SCROLLBAR === */
+.noise-meter ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.noise-meter ::-webkit-scrollbar-track {
+    background: var(--bg);
+    border-radius: 10px;
+}
+
+.noise-meter ::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+/* === LIGHT MODE === */
+body.light-mode .noise-meter #nm-graph,
+body.light-mode .noise-meter .nm-meter,
+body.light-mode .noise-meter .nm-description,
+body.light-mode .noise-meter .nm-stats {
+    background: var(--bg);
+}
+
+body.light-mode .noise-meter .nm-btn-secondary {
+    background: var(--bg);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+body.light-mode .noise-meter .nm-btn-secondary:hover:not(:disabled) {
+    background: #e0d6cc;
+}

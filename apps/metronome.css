@@ -1,0 +1,619 @@
+/* ============================================
+   METRONOME - profesionální styl
+   ============================================ */
+
+.metronome {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 20px;
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+/* === RESPONSIVE - mobil === */
+@media (max-width: 600px) {
+    .metronome {
+        padding: 16px;
+        border-radius: 16px;
+    }
+}
+
+/* === HLAVIČKA (centrovaná) === */
+.metronome .mt-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.metronome .mt-header .mt-icon {
+    font-size: 48px;
+    background: var(--bg);
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+}
+
+.metronome .mt-header h3 {
+    margin: 0 0 4px 0;
+    color: var(--accent);
+    font-size: 1.5rem;
+}
+
+.metronome .mt-header p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+/* === SEKCE - popisky VLEVO === */
+.metronome .mt-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.metronome .mt-label {
+    font-weight: 500;
+    color: var(--text);
+    font-size: 0.85rem;
+    text-align: left;  /* 🔥 VLEVO */
+}
+
+/* === BPM DISPLAY - centrovaný === */
+.metronome .mt-bpm-row {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.metronome .mt-bpm-display {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--bg);
+    padding: 16px 32px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+}
+
+.metronome .mt-bpm-value {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+}
+
+.metronome .mt-bpm-label {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-top: 6px;
+}
+
+/* === BPM OVLÁDÁNÍ === */
+.metronome .mt-bpm-control {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.metronome .mt-bpm-btn {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.metronome .mt-bpm-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    transform: scale(0.95);
+}
+
+/* === SLIDERY === */
+.metronome .mt-slider {
+    flex: 1;
+    height: 6px;
+    -webkit-appearance: none;
+    background: var(--border);
+    border-radius: 10px;
+    outline: none;
+}
+
+.metronome .mt-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--accent);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.metronome .mt-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+/* === GRID 3 SLOUPCE === */
+.metronome .mt-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+@media (max-width: 600px) {
+    .metronome .mt-grid-3 {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+.metronome .mt-select-full {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 12px;
+    color: var(--text);
+    font-size: 0.85rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* === SPEED TRAINER === */
+.metronome .mt-trainer-box {
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 14px;
+    border: 1px solid var(--border);
+}
+
+.metronome .mt-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.metronome .mt-checkbox-label input {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--accent);
+}
+
+.metronome .mt-trainer-settings {
+    margin-top: 12px;
+}
+
+.metronome .mt-trainer-flex {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+.metronome .mt-input-small {
+    width: 60px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 8px;
+    color: var(--text);
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+/* === VIZUÁLNÍ PRVKY - VERTIKÁLNĚ, CENTROVANÉ === */
+.metronome .mt-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+    padding: 20px;
+    background: var(--bg);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+}
+
+/* Aktuální doba */
+.metronome .mt-counter {
+    text-align: center;
+}
+
+.metronome .mt-counter-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    transition: all 0.1s ease;
+}
+
+.metronome .mt-counter-value.pulse {
+    transform: scale(1.1);
+}
+
+.metronome .mt-counter-label {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-top: 4px;
+}
+
+/* Kyvadlo */
+.metronome .mt-pendulum {
+    position: relative;
+    width: 80px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+}
+
+.metronome .mt-pendulum-pivot {
+    position: absolute;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.metronome .mt-pendulum-arm {
+    position: absolute;
+    top: 5px;
+    width: 3px;
+    height: 100px;
+    background: var(--accent);
+    transform-origin: top center;
+    transition: transform 0.5s ease-in-out;
+}
+
+.metronome .mt-pendulum-weight {
+    position: absolute;
+    bottom: 0;
+    left: -8px;
+    width: 19px;
+    height: 19px;
+    background: var(--accent);
+    border-radius: 50%;
+}
+
+/* Světlo */
+.metronome .mt-light {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: all 0.05s ease;
+}
+
+.metronome .mt-light.active {
+    background: var(--accent);
+    box-shadow: 0 0 15px var(--accent);
+}
+
+.metronome .mt-light.accent {
+    background: #e74c3c;
+    box-shadow: 0 0 20px #e74c3c;
+}
+
+/* === BEAT INDICATOR (TEČKY) === */
+.metronome .mt-beat-indicator {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 15px 0 5px 0;
+}
+
+.metronome .mt-beat {
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    opacity: 0.5;
+}
+
+/* 🔥 AKTIVNÍ TEČKA - zvýraznění! */
+.metronome .mt-beat.active {
+    opacity: 1;
+    transform: scale(1.2);
+    text-shadow: 0 0 5px currentColor;
+}
+
+.metronome .mt-beat.mt-interactive:hover {
+    opacity: 0.8;
+    transform: scale(1.15);
+}
+
+/* === HLAVNÍ TLAČÍTKA - na desktopu vedle sebe, na mobilu do stran === */
+.metronome .mt-controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 500px) {
+    .metronome .mt-controls {
+        justify-content: space-between;  /* 🔥 TLAČÍTKA DO STRAN */
+        gap: 8px;
+    }
+    
+    .metronome .mt-btn {
+        flex: 1;
+        min-width: 0;
+        padding: 10px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+.metronome .mt-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-family: inherit;
+}
+
+.metronome .mt-btn-primary {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.metronome .mt-btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.metronome .mt-btn-secondary {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.metronome .mt-btn-secondary:hover:not(:disabled) {
+    background: var(--border);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.metronome .mt-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* === VOLUME === */
+.metronome .mt-volume-control {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.metronome .mt-volume-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.metronome .mt-volume-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--bg);
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+}
+
+.metronome .mt-volume-item span:first-child {
+    font-size: 1.2rem;
+    min-width: 30px;
+}
+
+.metronome .mt-slider-small {
+    flex: 1;
+    height: 4px;
+    -webkit-appearance: none;
+    background: var(--border);
+    border-radius: 10px;
+    outline: none;
+}
+
+.metronome .mt-slider-small::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    background: var(--accent);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.metronome .mt-volume-percent {
+    min-width: 45px;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    text-align: right;
+}
+
+/* === PRESETY === */
+.metronome .mt-preset-control {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.metronome .mt-input {
+    flex: 2;
+    min-width: 150px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 14px;
+    color: var(--text);
+    font-size: 0.85rem;
+}
+
+.metronome .mt-presets-list {
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg);
+    margin-top: 10px;
+}
+
+.metronome .mt-empty-presets {
+    padding: 20px;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+}
+
+.metronome .mt-preset-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.metronome .mt-preset-item:last-child {
+    border-bottom: none;
+}
+
+.metronome .mt-preset-info {
+    flex: 1;
+    text-align: left;
+}
+
+.metronome .mt-preset-info strong {
+    color: var(--accent);
+    font-size: 0.85rem;
+}
+
+.metronome .mt-preset-info span {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-left: 8px;
+}
+
+.metronome .mt-preset-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.metronome .mt-preset-load {
+    background: var(--accent);
+    color: white;
+}
+
+.metronome .mt-preset-del {
+    background: #dc2626;
+    color: white;
+}
+
+.metronome .mt-preset-load:hover,
+.metronome .mt-preset-del:hover {
+    transform: translateY(-1px);
+    filter: brightness(0.95);
+}
+
+.metronome .mt-btn-small {
+    padding: 4px 10px;
+    font-size: 0.7rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+/* === SCROLLBAR === */
+.metronome ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.metronome ::-webkit-scrollbar-track {
+    background: var(--bg);
+    border-radius: 10px;
+}
+
+.metronome ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 10px;
+}
+
+.metronome ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* === LIGHT MODE === */
+body.light-mode .metronome .mt-bpm-display,
+body.light-mode .metronome .mt-select-full,
+body.light-mode .metronome .mt-presets-list,
+body.light-mode .metronome .mt-volume-item,
+body.light-mode .metronome .mt-trainer-box,
+body.light-mode .metronome .mt-visual {
+    background: var(--bg);
+}
+
+body.light-mode .metronome .mt-btn-secondary {
+    background: var(--bg);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+body.light-mode .metronome .mt-btn-secondary:hover:not(:disabled) {
+    background: #e0d6cc;
+    border-color: var(--accent);
+}
+
+body.light-mode .metronome .mt-bpm-btn {
+    background: var(--bg);
+}
+
+body.light-mode .metronome .mt-bpm-btn:hover {
+    background: var(--accent);
+    color: white;
+}

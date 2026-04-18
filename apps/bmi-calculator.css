@@ -1,0 +1,497 @@
+/* ============================================
+   BMI CALCULATOR - lokální styl (.bmi-calculator-new)
+   ============================================ */
+
+.bmi-calculator-new {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 20px;
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+/* === RESPONSIVE - mobil === */
+@media (max-width: 600px) {
+    .bmi-calculator-new {
+        padding: 16px;
+        border-radius: 16px;
+    }
+}
+
+/* === HLAVIČKA === */
+.bmi-calculator-new .bmi-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.bmi-calculator-new .bmi-header .bmi-icon {
+    font-size: 48px;
+    background: var(--bg);
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+}
+
+.bmi-calculator-new .bmi-header h3 {
+    margin: 0 0 4px 0;
+    color: var(--accent);
+    font-size: 1.5rem;
+}
+
+.bmi-calculator-new .bmi-header p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+/* === SEKCE === */
+.bmi-calculator-new .bmi-section {
+    margin-bottom: 20px;
+}
+
+.bmi-calculator-new .bmi-label {
+    font-weight: 500;
+    color: var(--text);
+    font-size: 0.85rem;
+    text-align: left;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* === PŘEPÍNÁNÍ POHLAVÍ === */
+.bmi-calculator-new .bmi-gender {
+    display: flex;
+    gap: 12px;
+}
+
+.bmi-calculator-new .bmi-gender-btn {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text);
+}
+
+.bmi-calculator-new .bmi-gender-btn:hover {
+    background: var(--border);
+    transform: translateY(-2px);
+}
+
+.bmi-calculator-new .bmi-gender-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+/* === INPUT GROUP === */
+.bmi-calculator-new .bmi-input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bmi-calculator-new .bmi-input {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 14px;
+    color: var(--text);
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.bmi-calculator-new .bmi-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(122, 78, 45, 0.2);
+}
+
+.bmi-calculator-new .bmi-unit {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    min-width: 40px;
+}
+
+/* === DETAILS (ROZŠÍŘENÉ MÍRY) === */
+.bmi-calculator-new .bmi-details {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 20px;
+}
+
+.bmi-calculator-new .bmi-details summary {
+    cursor: pointer;
+    color: var(--accent);
+    font-weight: 500;
+    font-size: 0.85rem;
+    user-select: none;
+}
+
+.bmi-calculator-new .bmi-extra {
+    margin-top: 12px;
+}
+
+.bmi-calculator-new .bmi-extra-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.bmi-calculator-new .bmi-extra-row label {
+    flex: 1;
+    font-size: 0.75rem;
+    color: var(--text);
+}
+
+.bmi-calculator-new .bmi-input-small {
+    width: 100px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 8px 10px;
+    color: var(--text);
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.bmi-calculator-new .bmi-input-small:focus {
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(122, 78, 45, 0.2);
+}
+
+/* === HLAVNÍ TLAČÍTKA === */
+.bmi-calculator-new .bmi-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.bmi-calculator-new .bmi-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-family: inherit;
+}
+
+.bmi-calculator-new .bmi-btn-primary {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.bmi-calculator-new .bmi-btn-primary:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.bmi-calculator-new .bmi-btn-secondary {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.bmi-calculator-new .bmi-btn-secondary:hover {
+    background: var(--border);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.bmi-calculator-new .bmi-btn-primary:active,
+.bmi-calculator-new .bmi-btn-secondary:active {
+    transform: translateY(1px);
+}
+
+/* === RESPONSIVE TLAČÍTKA === */
+@media (max-width: 480px) {
+    .bmi-calculator-new .bmi-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .bmi-calculator-new .bmi-btn {
+        width: 100%;
+        max-width: 220px;
+        justify-content: center;
+    }
+}
+
+/* === VÝSLEDKOVÁ SEKCE === */
+.bmi-calculator-new .bmi-result-section {
+    margin-top: 20px;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+}
+
+.bmi-calculator-new .bmi-result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.bmi-calculator-new .bmi-result-header span {
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 0.9rem;
+}
+
+.bmi-calculator-new .bmi-small-btn {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text);
+}
+
+.bmi-calculator-new .bmi-small-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.bmi-calculator-new .bmi-result {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.bmi-calculator-new .bmi-empty {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+.bmi-calculator-new .bmi-error {
+    text-align: center;
+    padding: 20px;
+    color: #dc2626;
+    font-size: 0.85rem;
+}
+
+/* === KARTA VÝSLEDKU === */
+.bmi-calculator-new .bmi-result-card {
+    border-radius: 12px;
+}
+
+.bmi-calculator-new .bmi-result-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.bmi-calculator-new .bmi-result-bmi {
+    text-align: center;
+}
+
+.bmi-calculator-new .bmi-bmi-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+}
+
+.bmi-calculator-new .bmi-bmi-label {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    display: block;
+}
+
+.bmi-calculator-new .bmi-result-category {
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* === STATISTIKY === */
+.bmi-calculator-new .bmi-result-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+@media (max-width: 480px) {
+    .bmi-calculator-new .bmi-result-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+.bmi-calculator-new .bmi-stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.bmi-calculator-new .bmi-stat-label {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+}
+
+.bmi-calculator-new .bmi-stat-value {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text);
+}
+
+/* === POPIS === */
+.bmi-calculator-new .bmi-result-description {
+    background: rgba(122, 78, 45, 0.1);
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+    line-height: 1.4;
+}
+
+/* === WHR SEKCE === */
+.bmi-calculator-new .bmi-whr-section {
+    background: var(--bg);
+    border-left: 3px solid;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 16px;
+}
+
+.bmi-calculator-new .bmi-whr-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.bmi-calculator-new .bmi-whr-header span {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+}
+
+.bmi-calculator-new .bmi-whr-header strong {
+    font-size: 1rem;
+}
+
+.bmi-calculator-new .bmi-whr-category {
+    font-size: 0.7rem;
+    margin-bottom: 6px;
+}
+
+.bmi-calculator-new .bmi-whr-note {
+    font-size: 0.65rem;
+    color: var(--text-dim);
+}
+
+/* === TIP === */
+.bmi-calculator-new .bmi-tip-inline {
+    background: rgba(122, 78, 45, 0.05);
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    text-align: center;
+}
+
+.bmi-calculator-new .bmi-tip {
+    background: rgba(122, 78, 45, 0.1);
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-top: 20px;
+    text-align: left;
+}
+
+.bmi-calculator-new .bmi-tip strong {
+    color: var(--accent);
+}
+
+/* === SCROLLBAR === */
+.bmi-calculator-new ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.bmi-calculator-new ::-webkit-scrollbar-track {
+    background: var(--bg);
+    border-radius: 10px;
+}
+
+.bmi-calculator-new ::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+/* === LIGHT MODE === */
+body.light-mode .bmi-calculator-new .bmi-input,
+body.light-mode .bmi-calculator-new .bmi-details,
+body.light-mode .bmi-calculator-new .bmi-input-small,
+body.light-mode .bmi-calculator-new .bmi-result {
+    background: var(--bg);
+}
+
+body.light-mode .bmi-calculator-new .bmi-btn-secondary {
+    background: var(--bg);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+body.light-mode .bmi-calculator-new .bmi-btn-secondary:hover {
+    background: #e0d6cc;
+}
+
+body.light-mode .bmi-calculator-new .bmi-gender-btn.active {
+    background: var(--accent);
+    color: white;
+}
+
+body.light-mode .bmi-calculator-new .bmi-small-btn:hover {
+    background: var(--accent);
+    color: white;
+}

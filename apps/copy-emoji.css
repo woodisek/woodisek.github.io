@@ -1,0 +1,310 @@
+/* ============================================
+   COPY EMOJI - lokální styl (.copy-emoji-app-v2)
+   ============================================ */
+
+.copy-emoji-app-v2 {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 20px;
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+/* === RESPONSIVE - mobil === */
+@media (max-width: 600px) {
+    .copy-emoji-app-v2 {
+        padding: 16px;
+        border-radius: 16px;
+    }
+}
+
+/* === HLAVIČKA (stejná jako ostatní apps) === */
+.copy-emoji-app-v2 .ce-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.copy-emoji-app-v2 .ce-header .ce-icon {
+    font-size: 48px;
+    background: var(--bg);
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+}
+
+.copy-emoji-app-v2 .ce-header h3 {
+    margin: 0 0 4px 0;
+    color: var(--accent);
+    font-size: 1.5rem;
+}
+
+.copy-emoji-app-v2 .ce-header p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+/* === KATEGORIE - HORIZONTÁLNÍ SCROLL === */
+.copy-emoji-app-v2 .categories-wrapper {
+    margin-bottom: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+}
+
+.copy-emoji-app-v2 .categories-container {
+    display: flex;
+    gap: 10px;
+    padding: 4px 0 12px 0;
+    min-width: min-content;
+}
+
+.copy-emoji-app-v2 .category-btn {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: 8px 18px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.copy-emoji-app-v2 .category-btn:hover {
+    background: var(--border);
+    transform: translateY(-2px);
+}
+
+.copy-emoji-app-v2 .category-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* === VYHLEDÁVÁNÍ === */
+.copy-emoji-app-v2 .search-wrapper-v2 {
+    margin-bottom: 16px;
+}
+
+.copy-emoji-app-v2 .search-input-v2 {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 16px;
+    color: var(--text);
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.copy-emoji-app-v2 .search-input-v2:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(122, 78, 45, 0.2);
+}
+
+.copy-emoji-app-v2 .search-input-v2::placeholder {
+    color: var(--text-dim);
+}
+
+/* === STATISTIKA (počítadlo výsledků) === */
+.copy-emoji-app-v2 .stats-bar {
+    margin-bottom: 16px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.copy-emoji-app-v2 .result-count {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+}
+
+/* === GRID EMOJI === */
+.copy-emoji-app-v2 .emoji-grid-wrapper {
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 4px;
+    padding-top: 8px;  /* 🔥 MÍSTO NAHOŘE NAD KARTAMI */
+}
+
+.copy-emoji-app-v2 .emoji-grid-v2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 12px;
+}
+
+@media (max-width: 500px) {
+    .copy-emoji-app-v2 .emoji-grid-v2 {
+        grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+        gap: 10px;
+    }
+}
+
+/* === KARTA EMOJI === */
+.copy-emoji-app-v2 .emoji-card-v2 {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.copy-emoji-app-v2 .emoji-card-v2:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    background: var(--accent);
+}
+
+.copy-emoji-app-v2 .emoji-card-v2:hover .emoji-char-v2 {
+    transform: scale(1.1);
+}
+
+.copy-emoji-app-v2 .emoji-char-v2 {
+    font-size: 2.8rem;
+    transition: transform 0.2s ease;
+}
+
+@media (max-width: 500px) {
+    .copy-emoji-app-v2 .emoji-char-v2 {
+        font-size: 2.2rem;
+    }
+}
+
+.copy-emoji-app-v2 .emoji-hint {
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    transition: color 0.2s ease;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.copy-emoji-app-v2 .emoji-card-v2:hover .emoji-hint {
+    color: white;
+}
+
+/* === ŽÁDNÉ VÝSLEDKY === */
+.copy-emoji-app-v2 .no-results-v2 {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    background: var(--bg);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+}
+
+.copy-emoji-app-v2 .no-results-v2 small {
+    font-size: 0.75rem;
+    display: block;
+    margin-top: 8px;
+}
+
+/* === CUSTOM SCROLLBAR (hnědá) === */
+.copy-emoji-app-v2 .emoji-grid-wrapper::-webkit-scrollbar,
+.copy-emoji-app-v2 .categories-wrapper::-webkit-scrollbar {
+    width: 8px;
+    height: 6px;
+}
+
+.copy-emoji-app-v2 .emoji-grid-wrapper::-webkit-scrollbar-track,
+.copy-emoji-app-v2 .categories-wrapper::-webkit-scrollbar-track {
+    background: var(--bg);
+    border-radius: 10px;
+}
+
+.copy-emoji-app-v2 .emoji-grid-wrapper::-webkit-scrollbar-thumb,
+.copy-emoji-app-v2 .categories-wrapper::-webkit-scrollbar-thumb {
+    background: var(--accent);  /* 🔥 HNOĚDÁ */
+    border-radius: 10px;
+}
+
+.copy-emoji-app-v2 .emoji-grid-wrapper::-webkit-scrollbar-thumb:hover,
+.copy-emoji-app-v2 .categories-wrapper::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+    filter: brightness(0.85);
+}
+
+/* === LIGHT MODE === */
+body.light-mode .copy-emoji-app-v2 .category-btn,
+body.light-mode .copy-emoji-app-v2 .search-input-v2,
+body.light-mode .copy-emoji-app-v2 .emoji-card-v2,
+body.light-mode .copy-emoji-app-v2 .no-results-v2 {
+    background: var(--bg);
+}
+
+body.light-mode .copy-emoji-app-v2 .category-btn:hover {
+    background: #e0d6cc;
+}
+
+body.light-mode .copy-emoji-app-v2 .category-btn.active {
+    background: var(--accent);
+    color: white;
+}
+
+body.light-mode .copy-emoji-app-v2 .emoji-card-v2:hover {
+    background: var(--accent);
+}
+
+body.light-mode .copy-emoji-app-v2 .emoji-card-v2:hover .emoji-hint {
+    color: white;
+}
+/* === SCROLLBAR (POSUVNÍK) - hnědý design === */
+.copy-emoji-app-v2 .emoji-grid-wrapper::-webkit-scrollbar,
+.copy-emoji-app-v2 .categories-wrapper::-webkit-scrollbar {
+    width: 8px;
+    height: 6px;
+}
+
+.copy-emoji-app-v2 .emoji-grid-wrapper::-webkit-scrollbar-track,
+.copy-emoji-app-v2 .categories-wrapper::-webkit-scrollbar-track {
+    background: var(--border);
+    border-radius: 10px;
+}
+
+.copy-emoji-app-v2 .emoji-grid-wrapper::-webkit-scrollbar-thumb,
+.copy-emoji-app-v2 .categories-wrapper::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+.copy-emoji-app-v2 .emoji-grid-wrapper::-webkit-scrollbar-thumb:hover,
+.copy-emoji-app-v2 .categories-wrapper::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+    filter: brightness(0.85);
+}
+
+/* Firefox */
+.copy-emoji-app-v2 .emoji-grid-wrapper,
+.copy-emoji-app-v2 .categories-wrapper {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) var(--border);
+}
+

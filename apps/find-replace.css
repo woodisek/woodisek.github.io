@@ -1,0 +1,466 @@
+/* ============================================
+   FIND & REPLACE - lokální styl (.find-replace)
+   ============================================ */
+
+.find-replace {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 20px;
+    padding: 24px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+/* === RESPONSIVE - mobil === */
+@media (max-width: 600px) {
+    .find-replace {
+        padding: 16px;
+        border-radius: 16px;
+    }
+}
+
+/* === HLAVIČKA === */
+.find-replace .fr-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.find-replace .fr-header .fr-icon {
+    font-size: 48px;
+    background: var(--bg);
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+}
+
+.find-replace .fr-header h3 {
+    margin: 0 0 4px 0;
+    color: var(--accent);
+    font-size: 1.5rem;
+}
+
+.find-replace .fr-header p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+/* === SEKCE === */
+.find-replace .fr-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.find-replace .fr-label {
+    font-weight: 500;
+    color: var(--text);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.find-replace .fr-label-small {
+    font-weight: 500;
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+/* === TEXTAREA === */
+.find-replace .fr-textarea {
+    width: 100%;
+    max-width: 800px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+    color: var(--text);
+    font-size: 0.9rem;
+    font-family: 'Monaco', 'Menlo', monospace;
+    transition: all 0.2s ease;
+    outline: none;
+    resize: vertical;
+}
+
+.find-replace .fr-textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(122, 78, 45, 0.2);
+}
+
+/* === ŘÁDEK PRO INPUTY (hledat/nahradit) === */
+.find-replace .fr-row {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    max-width: 800px;
+    flex-wrap: wrap;
+}
+
+.find-replace .fr-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.find-replace .fr-input {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 14px;
+    color: var(--text);
+    font-size: 0.9rem;
+    font-family: 'Monaco', 'Menlo', monospace;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.find-replace .fr-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(122, 78, 45, 0.2);
+}
+
+/* === CHECKBOXY (MOŽNOSTI) === */
+.find-replace .fr-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.find-replace .fr-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: var(--text);
+    font-size: 0.85rem;
+}
+
+.find-replace .fr-checkbox input {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--accent);
+}
+
+/* === TLAČÍTKA HLAVNÍ === */
+.find-replace .fr-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.find-replace .fr-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-family: inherit;
+}
+
+.find-replace .fr-btn-primary {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.find-replace .fr-btn-primary:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.find-replace .fr-btn-secondary {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.find-replace .fr-btn-secondary:hover {
+    background: var(--border);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.find-replace .fr-btn-primary:active,
+.find-replace .fr-btn-secondary:active {
+    transform: translateY(1px);
+}
+
+/* === RESPONSIVE TLAČÍTKA === */
+@media (max-width: 550px) {
+    .find-replace .fr-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .find-replace .fr-btn {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+    }
+}
+
+/* === STATISTIKY === */
+.find-replace .fr-stats {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.find-replace .fr-stat-card {
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 12px 24px;
+    text-align: center;
+    border: 1px solid var(--border);
+    min-width: 100px;
+}
+
+.find-replace .fr-stat-value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.2;
+}
+
+.find-replace .fr-stat-label {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-top: 4px;
+}
+
+/* === ŽIVÝ NÁHLED === */
+.find-replace .fr-live-preview {
+    width: 100%;
+    max-width: 800px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.find-replace .fr-preview-split {
+    display: flex;
+    flex-direction: column;
+}
+
+.find-replace .fr-preview-half {
+    padding: 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.find-replace .fr-preview-half:last-child {
+    border-bottom: none;
+}
+
+.find-replace .fr-preview-label {
+    font-size: 0.7rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.find-replace .fr-preview-content {
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 0.8rem;
+    color: var(--text);
+    line-height: 1.5;
+    word-break: break-word;
+    white-space: pre-wrap;
+    text-align: left;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.find-replace .fr-preview-placeholder {
+    padding: 30px;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+/* === ZVÝRAZNĚNÍ NALEZENÉHO TEXTU === */
+.find-replace .fr-highlight-match {
+    background: rgba(122, 78, 45, 0.3);
+    color: var(--accent);
+    font-weight: bold;
+    border-radius: 4px;
+    padding: 0 2px;
+}
+
+/* === AKCE (RYCHLÉ TLAČÍTKA) === */
+.find-replace .fr-actions-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.find-replace .fr-action-group {
+    background: var(--bg);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.find-replace .fr-action-group-title {
+    background: var(--card);
+    padding: 10px 16px;
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 0.85rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.find-replace .fr-action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px;
+}
+
+.find-replace .fr-action-btn {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.find-replace .fr-action-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* === RESPONSIVE PRO AKCE === */
+@media (max-width: 600px) {
+    .find-replace .fr-action-buttons {
+        justify-content: center;
+    }
+    
+    .find-replace .fr-action-btn {
+        font-size: 0.7rem;
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .find-replace .fr-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .find-replace .fr-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .find-replace .fr-stat-card {
+        padding: 8px 16px;
+        min-width: 80px;
+    }
+    
+    .find-replace .fr-stat-value {
+        font-size: 1.2rem;
+    }
+}
+
+/* === CUSTOM SCROLLBAR === */
+.find-replace ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.find-replace ::-webkit-scrollbar-track {
+    background: var(--bg);
+    border-radius: 10px;
+}
+
+.find-replace ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 10px;
+}
+
+.find-replace ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* === LIGHT MODE === */
+body.light-mode .find-replace .fr-textarea,
+body.light-mode .find-replace .fr-input,
+body.light-mode .find-replace .fr-live-preview,
+body.light-mode .find-replace .fr-stat-card,
+body.light-mode .find-replace .fr-action-group {
+    background: var(--bg);
+}
+
+body.light-mode .find-replace .fr-btn-secondary {
+    background: var(--bg);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+body.light-mode .find-replace .fr-btn-secondary:hover {
+    background: #e0d6cc;
+    border-color: var(--accent);
+}
+
+body.light-mode .find-replace .fr-action-btn {
+    background: var(--bg);
+}
+
+body.light-mode .find-replace .fr-action-btn:hover {
+    background: var(--accent);
+    color: white;
+}
+
+body.light-mode .find-replace .fr-highlight-match {
+    background: rgba(139, 90, 43, 0.2);
+}
+
+body.light-mode .find-replace .fr-action-group-title {
+    background: var(--bg);
+}

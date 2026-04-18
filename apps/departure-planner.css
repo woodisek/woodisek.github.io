@@ -1,0 +1,573 @@
+/* ============================================
+   DEPARTURE PLANNER - lokální styl (.departure-planner-pro)
+   ============================================ */
+
+.departure-planner-pro {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 20px;
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+/* === RESPONSIVE - mobil === */
+@media (max-width: 600px) {
+    .departure-planner-pro {
+        padding: 16px;
+        border-radius: 16px;
+    }
+}
+
+/* === HLAVIČKA === */
+.departure-planner-pro .dpp-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.departure-planner-pro .dpp-header .dpp-icon {
+    font-size: 48px;
+    background: var(--bg);
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+}
+
+.departure-planner-pro .dpp-header h3 {
+    margin: 0 0 4px 0;
+    color: var(--accent);
+    font-size: 1.5rem;
+}
+
+.departure-planner-pro .dpp-header p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+/* === SEKCE === */
+.departure-planner-pro .dpp-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.departure-planner-pro .dpp-label {
+    font-weight: 500;
+    color: var(--text);
+    font-size: 0.85rem;
+    text-align: left;
+}
+
+.departure-planner-pro .dpp-hint {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    text-align: left;
+}
+
+/* === INPUT === */
+.departure-planner-pro .dpp-input {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 14px;
+    color: var(--text);
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    outline: none;
+    width: 100%;
+    max-width: 200px;
+}
+
+.departure-planner-pro .dpp-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(122, 78, 45, 0.2);
+}
+
+/* === HLAVA SEZNAMU KROKŮ === */
+.departure-planner-pro .dpp-steps-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.departure-planner-pro .dpp-small-btn {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text);
+}
+
+.departure-planner-pro .dpp-small-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* === SEZNAM KROKŮ === */
+.departure-planner-pro .dpp-steps-list {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 8px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.departure-planner-pro .dpp-empty-steps {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+/* === POLOŽKA KROKU === */
+.departure-planner-pro .dpp-step-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 10px;
+    padding: 12px;
+    transition: all 0.2s ease;
+}
+
+.departure-planner-pro .dpp-step-item:last-child {
+    margin-bottom: 0;
+}
+
+.departure-planner-pro .dpp-step-item:hover {
+    border-color: var(--accent);
+}
+
+.departure-planner-pro .dpp-step-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.departure-planner-pro .dpp-step-number {
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 0.9rem;
+    min-width: 30px;
+}
+
+.departure-planner-pro .dpp-step-name {
+    flex: 1;
+    font-weight: 500;
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+.departure-planner-pro .dpp-step-name-edit {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    padding: 6px 10px;
+    color: var(--text);
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.departure-planner-pro .dpp-step-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.departure-planner-pro .dpp-step-edit,
+.departure-planner-pro .dpp-step-delete {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.8rem;
+}
+
+.departure-planner-pro .dpp-step-edit:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.departure-planner-pro .dpp-step-delete:hover {
+    background: #dc2626;
+    border-color: #dc2626;
+    color: white;
+}
+
+/* === TĚLO KROKU (trvání + rezerva) === */
+.departure-planner-pro .dpp-step-body {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-left: 40px;
+}
+
+.departure-planner-pro .dpp-step-time,
+.departure-planner-pro .dpp-step-reserve {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.departure-planner-pro .dpp-step-time span,
+.departure-planner-pro .dpp-step-reserve span {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+}
+
+.departure-planner-pro .dpp-time-control {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.departure-planner-pro .dpp-time-minus,
+.departure-planner-pro .dpp-time-plus {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text);
+}
+
+.departure-planner-pro .dpp-time-minus:hover,
+.departure-planner-pro .dpp-time-plus:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.departure-planner-pro .dpp-time-input {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 8px;
+    width: 60px;
+    text-align: center;
+    color: var(--text);
+    font-size: 0.85rem;
+}
+
+.departure-planner-pro .dpp-time-unit {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+}
+
+/* === HLAVNÍ TLAČÍTKA === */
+.departure-planner-pro .dpp-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.departure-planner-pro .dpp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-family: inherit;
+}
+
+.departure-planner-pro .dpp-btn-primary {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.departure-planner-pro .dpp-btn-primary:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.departure-planner-pro .dpp-btn-secondary {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.departure-planner-pro .dpp-btn-secondary:hover {
+    background: var(--border);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.departure-planner-pro .dpp-btn-primary:active,
+.departure-planner-pro .dpp-btn-secondary:active {
+    transform: translateY(1px);
+}
+
+/* === RESPONSIVE TLAČÍTKA === */
+@media (max-width: 500px) {
+    .departure-planner-pro .dpp-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .departure-planner-pro .dpp-btn {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+    }
+}
+
+/* === VÝSLEDKOVÁ SEKCE === */
+.departure-planner-pro .dpp-result-section {
+    margin-top: 20px;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+}
+
+.departure-planner-pro .dpp-result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.departure-planner-pro .dpp-result-header span {
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 0.9rem;
+}
+
+.departure-planner-pro .dpp-result {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.departure-planner-pro .dpp-empty {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+/* === TIMELINE === */
+.departure-planner-pro .dpp-timeline {
+    padding: 10px 0;
+}
+
+.departure-planner-pro .dpp-timeline-item {
+    background: var(--card);
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+}
+
+.departure-planner-pro .dpp-timeline-time {
+    font-size: 0.75rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.departure-planner-pro .dpp-timeline-label {
+    font-weight: 500;
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+.departure-planner-pro .dpp-timeline-desc {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-top: 4px;
+}
+
+.departure-planner-pro .dpp-timeline-arrow {
+    text-align: center;
+    color: var(--accent);
+    font-size: 1.2rem;
+    margin: 2px 0;
+}
+
+.departure-planner-pro .dpp-timeline-goal {
+    background: rgba(122, 78, 45, 0.1);
+    border-left-color: #22c55e;
+    margin-top: 20px;  /* 🔥 Mezera nad cílem */
+}
+
+/* === SOUHRN === */
+.departure-planner-pro .dpp-summary {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+.departure-planner-pro .dpp-summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.departure-planner-pro .dpp-summary-row span {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+.departure-planner-pro .dpp-summary-row strong {
+    color: var(--accent);
+    font-size: 1rem;
+}
+
+.departure-planner-pro .dpp-warning strong {
+    color: #dc2626;
+}
+
+.departure-planner-pro .dpp-warning-text {
+    color: #dc2626;
+    font-size: 0.75rem;
+}
+
+/* === ŠABLONY (DETAILS/SUMMARY) === */
+.departure-planner-pro .dpp-details {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    margin: 16px 0;
+}
+
+.departure-planner-pro .dpp-details summary {
+    cursor: pointer;
+    color: var(--accent);
+    font-weight: 500;
+    font-size: 0.85rem;
+    user-select: none;
+}
+
+.departure-planner-pro .dpp-templates {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.departure-planner-pro .dpp-template-btn {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text);
+}
+
+.departure-planner-pro .dpp-template-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* === TIP === */
+.departure-planner-pro .dpp-tip {
+    background: rgba(122, 78, 45, 0.1);
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-top: 16px;
+    text-align: left;
+}
+
+.departure-planner-pro .dpp-tip strong {
+    color: var(--accent);
+}
+
+/* === SCROLLBAR === */
+.departure-planner-pro .dpp-steps-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.departure-planner-pro .dpp-steps-list::-webkit-scrollbar-track {
+    background: var(--bg);
+    border-radius: 10px;
+}
+
+.departure-planner-pro .dpp-steps-list::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+/* === LIGHT MODE === */
+body.light-mode .departure-planner-pro .dpp-input,
+body.light-mode .departure-planner-pro .dpp-steps-list,
+body.light-mode .departure-planner-pro .dpp-step-item,
+body.light-mode .departure-planner-pro .dpp-result,
+body.light-mode .departure-planner-pro .dpp-details,
+body.light-mode .departure-planner-pro .dpp-step-name-edit,
+body.light-mode .departure-planner-pro .dpp-time-input {
+    background: var(--bg);
+}
+
+body.light-mode .departure-planner-pro .dpp-btn-secondary {
+    background: var(--bg);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+body.light-mode .departure-planner-pro .dpp-btn-secondary:hover {
+    background: #e0d6cc;
+}
+
+body.light-mode .departure-planner-pro .dpp-template-btn {
+    background: var(--bg);
+}
+
+body.light-mode .departure-planner-pro .dpp-template-btn:hover {
+    background: var(--accent);
+    color: white;
+}
+
+body.light-mode .departure-planner-pro .dpp-timeline-goal {
+    background: rgba(34, 197, 94, 0.1);
+}

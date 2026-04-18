@@ -1,0 +1,455 @@
+/* ============================================
+   FREQUENCY GENERATOR - lokální styl (.frequency-generator)
+   ============================================ */
+
+.frequency-generator {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 20px;
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+/* === RESPONSIVE - mobil === */
+@media (max-width: 600px) {
+    .frequency-generator {
+        padding: 16px;
+        border-radius: 16px;
+    }
+}
+
+/* === HLAVIČKA === */
+.frequency-generator .fg-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.frequency-generator .fg-header .fg-icon {
+    font-size: 48px;
+    background: var(--bg);
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+}
+
+.frequency-generator .fg-header h3 {
+    margin: 0 0 4px 0;
+    color: var(--accent);
+    font-size: 1.5rem;
+}
+
+.frequency-generator .fg-header p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+/* === SEKCE === */
+.frequency-generator .fg-section {
+    margin-bottom: 24px;
+}
+
+.frequency-generator .fg-label {
+    font-weight: 500;
+    color: var(--text);
+    font-size: 0.85rem;
+    text-align: left;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* === FREKVENČNÍ OVLÁDÁNÍ === */
+.frequency-generator .fg-frequency-control {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.frequency-generator .fg-freq-btn {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.frequency-generator .fg-freq-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    transform: scale(0.95);
+}
+
+.frequency-generator .fg-frequency-input {
+    flex: 1;
+    text-align: center;
+    font-size: 1rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px;
+    color: var(--text);
+    font-family: monospace;
+}
+
+.frequency-generator .fg-frequency-input:focus {
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(122, 78, 45, 0.2);
+}
+
+/* === SLIDER === */
+.frequency-generator .fg-slider {
+    width: 100%;
+    height: 6px;
+    -webkit-appearance: none;
+    background: var(--border);
+    border-radius: 10px;
+    outline: none;
+    margin: 10px 0;
+}
+
+.frequency-generator .fg-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--accent);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.frequency-generator .fg-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+/* === PRESETY FREKVENCÍ === */
+.frequency-generator .fg-frequency-presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.frequency-generator .fg-preset {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: 6px 14px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text);
+}
+
+.frequency-generator .fg-preset:hover {
+    background: var(--border);
+    transform: translateY(-2px);
+}
+
+.frequency-generator .fg-preset.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+/* === TVARY VLN === */
+.frequency-generator .fg-waveforms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.frequency-generator .fg-wave-btn {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: 6px 16px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text);
+}
+
+.frequency-generator .fg-wave-btn:hover {
+    background: var(--border);
+    transform: translateY(-2px);
+}
+
+.frequency-generator .fg-wave-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+/* === HLASITOST === */
+.frequency-generator .fg-volume-value {
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-top: 6px;
+}
+
+/* === HLAVNÍ TLAČÍTKO PŘEHRÁT TÓN === */
+.frequency-generator .fg-main-play {
+    margin-bottom: 24px;
+}
+
+.frequency-generator .fg-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-family: inherit;
+}
+
+.frequency-generator .fg-btn-primary {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    width: 100%;
+}
+
+.frequency-generator .fg-btn-primary:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* === EFEKTY === */
+.frequency-generator .fg-effects {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.frequency-generator .fg-effect {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.frequency-generator .fg-effect span:first-child {
+    width: 90px;
+    font-size: 0.75rem;
+    color: var(--text);
+}
+
+.frequency-generator .fg-effect input {
+    flex: 1;
+    height: 4px;
+    -webkit-appearance: none;
+    background: var(--border);
+    border-radius: 10px;
+}
+
+.frequency-generator .fg-effect input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    background: var(--accent);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.frequency-generator .fg-effect span:last-child {
+    width: 65px;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    text-align: right;
+    font-family: monospace;
+}
+
+/* === BINAURÁLNÍ SEKCE === */
+.frequency-generator .binaural-section {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px;
+    margin-top: 16px;
+}
+
+.frequency-generator .binaural-section .fg-label {
+    margin-bottom: 16px;
+}
+
+.frequency-generator .fg-binaural-volume,
+.frequency-generator .fg-binaural-base,
+.frequency-generator .fg-binaural-diff {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.frequency-generator .fg-binaural-volume span:first-child,
+.frequency-generator .fg-binaural-base span:first-child,
+.frequency-generator .fg-binaural-diff span:first-child {
+    width: 90px;
+    font-size: 0.75rem;
+    color: var(--text);
+}
+
+.frequency-generator .fg-binaural-volume input,
+.frequency-generator .fg-binaural-base input,
+.frequency-generator .fg-binaural-diff input {
+    flex: 1;
+    height: 4px;
+    -webkit-appearance: none;
+    background: var(--border);
+    border-radius: 10px;
+}
+
+.frequency-generator .fg-binaural-volume input::-webkit-slider-thumb,
+.frequency-generator .fg-binaural-base input::-webkit-slider-thumb,
+.frequency-generator .fg-binaural-diff input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    background: var(--accent);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.frequency-generator .fg-binaural-volume span:last-child,
+.frequency-generator .fg-binaural-base span:last-child,
+.frequency-generator .fg-binaural-diff span:last-child {
+    width: 65px;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    font-family: monospace;
+}
+
+.frequency-generator .fg-binaural-info {
+    background: rgba(122, 78, 45, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 12px 0;
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+}
+
+.frequency-generator .fg-btn-binaural {
+    background: var(--accent);
+    color: white;
+    width: 100%;
+    opacity: 0.85;
+}
+
+.frequency-generator .fg-btn-binaural:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+    opacity: 1;
+}
+
+/* === RESET TLAČÍTKO === */
+.frequency-generator .fg-reset-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.frequency-generator .fg-btn-reset {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.frequency-generator .fg-btn-reset:hover {
+    background: var(--border);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 550px) {
+    .frequency-generator .fg-effect span:first-child {
+        width: 75px;
+    }
+    
+    .frequency-generator .fg-binaural-volume span:first-child,
+    .frequency-generator .fg-binaural-base span:first-child,
+    .frequency-generator .fg-binaural-diff span:first-child {
+        width: 75px;
+    }
+    
+    .frequency-generator .fg-frequency-presets {
+        justify-content: center;
+    }
+    
+    .frequency-generator .fg-waveforms {
+        justify-content: center;
+    }
+}
+
+/* === SCROLLBAR === */
+.frequency-generator ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.frequency-generator ::-webkit-scrollbar-track {
+    background: var(--bg);
+    border-radius: 10px;
+}
+
+.frequency-generator ::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+/* === LIGHT MODE === */
+body.light-mode .frequency-generator .fg-frequency-input,
+body.light-mode .frequency-generator .fg-preset,
+body.light-mode .frequency-generator .fg-wave-btn,
+body.light-mode .frequency-generator .fg-effects,
+body.light-mode .frequency-generator .binaural-section {
+    background: var(--bg);
+}
+
+body.light-mode .frequency-generator .fg-btn-reset {
+    background: var(--bg);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+body.light-mode .frequency-generator .fg-btn-reset:hover {
+    background: #e0d6cc;
+}
+
+body.light-mode .frequency-generator .fg-preset.active,
+body.light-mode .frequency-generator .fg-wave-btn.active {
+    background: var(--accent);
+    color: white;
+}

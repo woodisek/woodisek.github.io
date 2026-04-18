@@ -1,0 +1,419 @@
+/* ============================================
+   AGE CALCULATOR - kompletní centrování
+   ============================================ */
+
+.age-calculator {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 20px;
+    padding: 24px;
+    transition: all 0.3s ease;
+    text-align: center;  /* 🔥 globální centrování textu */
+}
+
+/* === RESPONSIVE - mobil === */
+@media (max-width: 600px) {
+    .age-calculator {
+        padding: 16px;
+        border-radius: 16px;
+    }
+}
+
+/* === HLAVIČKA === */
+.age-calculator .ac-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;  /* 🔥 centrování */
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    text-align: left;  /* 🔥 text uvnitř necháme vlevo */
+}
+
+.age-calculator .ac-header .ac-icon {
+    font-size: 48px;
+    background: var(--bg);
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+}
+
+.age-calculator .ac-header h3 {
+    margin: 0 0 4px 0;
+    color: var(--accent);
+    font-size: 1.5rem;
+}
+
+.age-calculator .ac-header p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+/* === FORMULÁŘ - VŠE NA STŘED === */
+.age-calculator .ac-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* 🔥 centrování sekcí */
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.age-calculator .ac-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* 🔥 centrování obsahu sekce */
+    gap: 8px;
+    width: 100%;
+    max-width: 350px;
+}
+
+.age-calculator .ac-label {
+    font-weight: 500;
+    color: var(--text);
+    font-size: 0.9rem;
+    text-align: center;  /* 🔥 label na střed */
+}
+
+.age-calculator .ac-required {
+    color: #dc2626;
+    font-size: 0.8rem;
+}
+
+.age-calculator .ac-optional {
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    font-weight: normal;
+}
+
+/* === INPUTY === */
+.age-calculator .ac-input {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: var(--text);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    outline: none;
+    width: 100%;  /* 🔥 plná šířka sekce */
+    text-align: center;  /* 🔥 text uvnitř inputu na střed */
+}
+
+.age-calculator .ac-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(122, 78, 45, 0.2);
+}
+
+.age-calculator .ac-input:hover:not(:focus) {
+    border-color: var(--text-dim);
+}
+
+/* === TLAČÍTKA - CENTROVANÁ === */
+.age-calculator .ac-buttons {
+    display: flex;
+    justify-content: center;  /* 🔥 centrování */
+    align-items: center;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.age-calculator .ac-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;  /* 🔥 obsah tlačítka na střed */
+    gap: 10px;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-family: inherit;
+}
+
+.age-calculator .ac-btn-primary {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.age-calculator .ac-btn-primary:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.age-calculator .ac-btn-primary:active {
+    transform: translateY(1px);
+}
+
+.age-calculator .ac-btn-secondary {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.age-calculator .ac-btn-secondary:hover {
+    background: var(--border);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.age-calculator .ac-btn-secondary:active {
+    transform: translateY(1px);
+}
+
+.age-calculator .ac-btn-icon {
+    font-size: 1.2rem;
+}
+
+/* === RESPONSIVE TLAČÍTKA NA MOBILU === */
+@media (max-width: 480px) {
+    .age-calculator .ac-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .age-calculator .ac-btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
+}
+
+/* === VÝSLEDKY === */
+.age-calculator .ac-results {
+    margin-top: 24px;
+    animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.age-calculator .ac-results-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+@media (max-width: 500px) {
+    .age-calculator .ac-results-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+}
+
+.age-calculator .ac-result-card {
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 16px 8px;
+    text-align: center;
+    transition: all 0.2s ease;
+    border: 1px solid var(--border);
+}
+
+.age-calculator .ac-result-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.age-calculator .ac-result-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.2;
+}
+
+.age-calculator .ac-result-label {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-top: 6px;
+}
+
+/* === DIVIDER === */
+.age-calculator .ac-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 20px 0;
+}
+
+/* === STATS GRID === */
+.age-calculator .ac-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+@media (max-width: 600px) {
+    .age-calculator .ac-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+}
+
+.age-calculator .ac-stat-card {
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 14px 8px;
+    text-align: center;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+}
+
+.age-calculator .ac-stat-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.age-calculator .ac-stat-icon {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.age-calculator .ac-stat-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.age-calculator .ac-stat-label {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-top: 4px;
+}
+
+/* === INFO GRID === */
+.age-calculator .ac-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+@media (max-width: 480px) {
+    .age-calculator .ac-info-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+
+.age-calculator .ac-info-card {
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+}
+
+.age-calculator .ac-info-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.age-calculator .ac-info-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.age-calculator .ac-info-value {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.age-calculator .ac-info-label {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-top: 6px;
+}
+
+/* === RESET TLAČÍTKO === */
+.age-calculator .ac-reset {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+@media (max-width: 480px) {
+    .age-calculator .ac-reset {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .age-calculator .ac-reset .ac-btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
+}
+
+/* === CUSTOM SCROLLBAR === */
+.age-calculator ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.age-calculator ::-webkit-scrollbar-track {
+    background: var(--bg);
+    border-radius: 10px;
+}
+
+.age-calculator ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 10px;
+}
+
+.age-calculator ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* === LIGHT MODE === */
+body.light-mode .age-calculator .ac-input,
+body.light-mode .age-calculator .ac-result-card,
+body.light-mode .age-calculator .ac-stat-card,
+body.light-mode .age-calculator .ac-info-card {
+    background: var(--bg);
+}
+
+body.light-mode .age-calculator .ac-btn-secondary {
+    background: var(--bg);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+body.light-mode .age-calculator .ac-btn-secondary:hover {
+    background: #e0d6cc;
+    border-color: var(--accent);
+}
+
+body.light-mode .age-calculator .ac-stat-value {
+    color: var(--text);
+}
+
+body.light-mode .age-calculator .ac-result-value {
+    color: var(--accent);
+}
