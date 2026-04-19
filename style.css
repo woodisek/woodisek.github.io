@@ -5332,3 +5332,44 @@ body::before {
 
 
 
+/* Počítadlo u kategorií */
+.cat-count {
+    background: var(--accent);
+    color: white;
+    border-radius: 20px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-left: 8px;
+    display: inline-block;
+    min-width: 24px;
+    text-align: center;
+}
+
+/* Light mode */
+body.light-mode .cat-count {
+    background: var(--accent);
+    color: white;
+}
+
+/* Aktivní tlačítko - počítadlo bílé */
+.f-btn.active .cat-count {
+    background: white;
+    color: var(--accent);
+}
+
+/* Tlačítko Slevy - počítadlo */
+.f-btn[data-cat="Slevy"] .cat-count {
+    background: var(--sale);
+}
+
+/* Tlačítko Skladem - počítadlo */
+.f-btn[data-cat="Skladem"] .cat-count {
+    background: var(--green);
+}
+
+/* Tlačítko Novinky - počítadlo */
+.f-btn[data-cat="Novinky"] .cat-count {
+    background: #ffc107;
+    color: #1a1a1a;
+}
