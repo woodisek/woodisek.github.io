@@ -373,10 +373,12 @@ export function renderBlogPosts(containerId = 'blog-container') {
         const previewText = plainText.length > 120 ? plainText.substring(0, 120) + '...' : plainText;
         const highlightedPreview = highlightLinks(previewText);
         
+        // ============================================
+        // VIDEO BLOGY
+        // ============================================
         if (post.type === 'video' && post.videoUrl) {
             let embedUrl = post.videoUrl;
             
-            // Získání náhledového obrázku
             let thumbnailUrl = 'https://via.placeholder.com/400x225?text=Video';
             let videoId = null;
             
@@ -406,7 +408,39 @@ export function renderBlogPosts(containerId = 'blog-container') {
                 </div>
             `;
         }
+        
+        // ============================================
+        // TEXT / OBRÁZKOVÉ BLOGY (PŘIDAT)
+        // ============================================
+        else if (post.type === 'text' && post.images && post.images.length > 0) {
+            html += `
+                <div class="blog-card" data-id="${post.id}" onclick="window.openBlogModalOnCard('${post.id}', event)">
+                    <div class="blog-image-container">
+                        <img class="blog-card-img" src="${post.images[0]}" loading="lazy" alt="${escapeHtml(post.title)}" style="width: 100%; aspect-ratio: 16/9; object-fit: cover;">
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">${escapeHtml(post.title)}</h3>
+                        <div class="blog-text">${highlightedPreview}</div>
+                        <button class="blog-read-more" onclick="window.openBlogModal('${post.id}', event)">📖 Číst dále</button>
+                    </div>
+                </div>
+            `;
+        }
     });
+    
+    html += '</div>';
+    container.innerHTML = html;
+    
+    // Pro obrázky – schovat spinner
+    document.querySelectorAll('.blog-card-img').forEach(img => {
+        img.addEventListener('load', function() {
+            this.style.opacity = '1';
+        });
+        if (img.complete) {
+            img.style.opacity = '1';
+        }
+    });
+
     
     html += '</div>';
     container.innerHTML = html;
