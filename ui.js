@@ -117,21 +117,54 @@ export function renderSkeletons(container, count = 8) {
 export function renderFilters() {
     const fDiv = document.getElementById("filters");
     if (!fDiv) return;
-    let html = `<button class="f-btn active" data-cat="Vše" onclick="window.filterData('Vše', this)">Vše</button>`;
-    if (allProducts.some(p => p.stock && p.stock !== "0")) {
-        html += `<button class="f-btn" data-cat="Skladem" style="color:var(--green); border-color:var(--green)" onclick="window.filterData('Skladem', this)"> 📦 Skladem</button>`;
+    
+    // Spočítej celkový počet aktivních produktů
+    const activeProducts = allProducts.filter(p => p.status === "TRUE");
+    const totalCount = activeProducts.length;
+    
+    // Spočítej produkty skladem
+    const sklademCount = activeProducts.filter(p => p.stock && p.stock !== "0").length;
+    
+    // Spočítej produkty ve slevě
+    const slevyCount = activeProducts.filter(p => p.sale && p.sale !== "0").length;
+    
+    // Začni s tlačítkem Vše
+    let html = `<button class="f-btn active" data-cat="Vše" onclick="window.filterData('Vše', this)">
+        Vše <span class="cat-count">${totalCount}</span>
+    </button>`;
+    
+    // Tlačítko Skladem (pokud nějaké jsou)
+    if (sklademCount > 0) {
+        html += `<button class="f-btn" data-cat="Skladem" style="color:var(--green); border-color:var(--green)" onclick="window.filterData('Skladem', this)">
+            📦 Skladem <span class="cat-count">${sklademCount}</span>
+        </button>`;
     }
-    if (allProducts.some(p => p.sale && p.sale !== "0")) {
-        html += `<button class="f-btn" data-cat="Slevy" style="color:var(--sale); border-color:var(--sale)" onclick="window.filterData('Slevy', this)"> 🔥 Slevy</button>`;
+    
+    // Tlačítko Slevy (pokud nějaké jsou)
+    if (slevyCount > 0) {
+        html += `<button class="f-btn" data-cat="Slevy" style="color:var(--sale); border-color:var(--sale)" onclick="window.filterData('Slevy', this)">
+            🔥 Slevy <span class="cat-count">${slevyCount}</span>
+        </button>`;
     }
+    
+    // Tlačítko Novinky (pokud existuje)
     if (Array.from(categories).includes("Novinky")) {
-        html += `<button class="f-btn" data-cat="Novinky" style="color:#ffc107; border-color:#ffc107" onclick="window.filterData('Novinky', this)">✨ Novinky</button>`;
+        const novinkyCount = activeProducts.filter(p => p.cat === "Novinky").length;
+        html += `<button class="f-btn" data-cat="Novinky" style="color:#ffc107; border-color:#ffc107" onclick="window.filterData('Novinky', this)">
+            ✨ Novinky <span class="cat-count">${novinkyCount}</span>
+        </button>`;
     }
+    
+    // Všechny ostatní kategorie
     Array.from(categories).sort().forEach(cat => {
         if (cat !== "Novinky") {
-            html += `<button class="f-btn" data-cat="${cat}" onclick="window.filterData('${cat}', this)">${cat}</button>`;
+            const count = activeProducts.filter(p => p.cat === cat).length;
+            html += `<button class="f-btn" data-cat="${cat}" onclick="window.filterData('${cat}', this)">
+                ${cat} <span class="cat-count">${count}</span>
+            </button>`;
         }
     });
+    
     fDiv.innerHTML = html;
 }
 
