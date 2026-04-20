@@ -21,10 +21,15 @@ function getCacheKey() {
 
 window.resetAndFilter = function() {
     window.showProducts();
-    window.filterData('Vše', document.querySelector('.f-btn.active'));
+    
+    // 🔥 OPRAVA: Najdi správné tlačítko "Vše"
+    const vseBtn = document.querySelector('.f-btn[data-cat="Vše"]');
+    if (vseBtn) {
+        window.filterData('Vše', vseBtn);
+    }
+    
     setTimeout(() => {
         if (window.productObserver) {
-            // ZMĚNA: Hledáme pouze karty, které patří fyzicky do sekce obchodu
             const products = document.querySelectorAll('#shop .product-card');
             if (products.length > 0) {
                 window.productObserver.disconnect();
