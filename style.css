@@ -5395,3 +5395,14 @@ body.light-mode .cat-count {
         gap: 12px;
     }
 }
+
+/* Schovat tlačítka na stránce reset hesla */
+body:has(#reset-password-container) .icon-btn,
+body:has(#reset-password-container) #floating-cart-btn,
+body:has(#reset-password-container) #chat-toggle-btn,
+body:has(#reset-password-container) .header-actions .icon-btn,
+body:has(#reset-password-container) [onclick="window.showWishlist()"],
+body:has(#reset-password-container) [onclick="window.showApps()"],
+body:has(#reset-password-container) #mode-toggle {
+    display: none !important;
+}
