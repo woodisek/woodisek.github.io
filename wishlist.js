@@ -154,7 +154,7 @@ let html = `
         <h2 style="color: var(--accent); margin: 0;">✨ Seznam přání (${wishlist.length})</h2>
         <button class="btn btn-sec" onclick="window.showProducts()">Zpět do obchodu</button>
     </div>
-    <div id="shop">
+    <div class="wishlist-grid">
 `;
     
     wishlist.forEach(product => {
