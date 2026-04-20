@@ -555,6 +555,7 @@ window.showBlog = function() {
     if (wishlistSection) wishlistSection.style.display = 'none';
         const userSection = document.getElementById('user-section');
     if (userSection) userSection.style.display = 'none';
+
     window.isInfiniteScrollDisabled = true;
     
     const shop = document.getElementById('shop');
@@ -625,21 +626,31 @@ window.showAbout = function() {
 
 window.showProducts = function() {
 
-    // Schovat apps sekci
+        // Schovat apps sekci
     const appsSection = document.getElementById('apps-section');
     if (appsSection) appsSection.style.display = 'none';
-    
+        // Zobraz tlačítko wishlist
+   //     const appsBtn = document.querySelector('.icon-btn[onclick="window.showApps()"]');
+    //if (appsBtn) appsBtn.style.display = 'none';
+        // SKRYJ UŽIVATELSKOU SEKCI
+    const userSection = document.getElementById('user-section');
+    if (userSection) userSection.style.display = 'none';
+
+
     // ============================================
-    // PŘIDAT: SCHOVAT WISHLIST SEKCI
+    // 🔥 PŘIDAT: SCHOVAT WISHLIST SEKCI
     // ============================================
     const wishlistSection = document.getElementById('wishlist-section');
     if (wishlistSection) wishlistSection.style.display = 'none';
-    
-    // SKRYJ UŽIVATELSKOU SEKCI
-    const userSection = document.getElementById('user-section');
-    if (userSection) userSection.style.display = 'none';
-    
+
+
+
     window.isInfiniteScrollDisabled = false;
+
+
+
+
+
     const shop = document.getElementById('shop');
     const blogSection = document.getElementById('blog-section');
     const aboutSection = document.getElementById('about');
@@ -694,6 +705,8 @@ window.showProducts = function() {
     if (blogSection) blogSection.style.display = 'none';
     if (aboutSection) aboutSection.style.display = 'none';
     if (portfolioSection) portfolioSection.style.display = 'block';
+
+    
 };
 
 export function renderProductsWithInfiniteScroll(productsToRender) {
