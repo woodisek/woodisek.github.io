@@ -5374,34 +5374,34 @@ body.light-mode .cat-count {
     color: #1a1a1a;
 }
 
+/* Základ (desktop) */
 .wishlist-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
 }
 
-/* Wishlist grid - mobilní verze */
-@media (max-width: 768px) {
+/* Mobil na výšku (portrait) - 2 karty */
+@media (max-width: 768px) and (orientation: portrait) {
     .wishlist-grid {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-        gap: 12px;
-        padding: 0px;
-    }
-}
-
-@media (max-width: 480px) {
-    .wishlist-grid {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 12px;
     }
 }
 
-/* Wishlist - landscape na mobilu (3 karty vedle sebe) */
+/* Mobil na šířku (landscape) - 3 karty */
 @media (max-width: 768px) and (orientation: landscape) {
     .wishlist-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 12px;
-        padding: 10px;
+    }
+}
+
+/* Pro tablety (méně než 1024px) - také 3 karty v landscape */
+@media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+    .wishlist-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
     }
 }
 
