@@ -156,7 +156,7 @@ function renderWishlist() {
     
 let html = `
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 15px; text-align: center;">
-        <h2 style="color: var(--accent); margin: 0;">✨ Seznam přání (${wishlist.length})</h2>
+        <h2 style="color: var(--accent); margin: 0;">✨ Seznam přání</h2>
         <button class="btn btn-sec" onclick="window.resetAndFilter()">Zpět do obchodu</button>
     </div>
     <div class="wishlist-grid">
