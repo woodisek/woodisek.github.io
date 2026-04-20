@@ -88,6 +88,11 @@ export function moveToCart(productId) {
 
 // Zobrazení stránky wishlist
 window.showWishlist = function() {
+
+        // Odpojit infinite scroll observer
+    if (window.productObserver) {
+        window.productObserver.disconnect();
+    }
     
     window.isInfiniteScrollDisabled = true;
     
@@ -143,7 +148,7 @@ function renderWishlist() {
                 <div style="font-size: 64px; margin-bottom: 20px;">✨</div>
                 <h3 style="color: var(--accent); margin-bottom: 10px;">Seznam přání je prázdný</h3>
                 <p style="color: var(--text-dim); margin-bottom: 20px;">Přidejte si produkty, které se vám líbí.</p>
-                <button class="btn btn-main" onclick="window.showProducts()">🛒 Procházet produkty</button>
+                <button class="btn btn-main" onclick="window.resetAndFilter()">🛒 Procházet produkty</button>
             </div>
         `;
         return;
@@ -152,7 +157,7 @@ function renderWishlist() {
 let html = `
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 15px; text-align: center;">
         <h2 style="color: var(--accent); margin: 0;">✨ Seznam přání (${wishlist.length})</h2>
-        <button class="btn btn-sec" onclick="window.showProducts()">Zpět do obchodu</button>
+        <button class="btn btn-sec" onclick="window.resetAndFilter()">Zpět do obchodu</button>
     </div>
     <div class="wishlist-grid">
 `;
