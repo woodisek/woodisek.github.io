@@ -19,6 +19,21 @@ function getCacheKey() {
     return `${currentCategory}|${query}|${minPriceVal}|${maxPriceVal}|${inStockVal}|${customVal}|${currentSort}`;
 }
 
+window.resetAndFilter = function() {
+    window.showProducts();
+    window.filterData('Vše', document.querySelector('.f-btn.active'));
+    setTimeout(() => {
+        if (window.productObserver) {
+            // ZMĚNA: Hledáme pouze karty, které patří fyzicky do sekce obchodu
+            const products = document.querySelectorAll('#shop .product-card');
+            if (products.length > 0) {
+                window.productObserver.disconnect();
+                window.productObserver.observe(products[products.length - 1]);
+            }
+        }
+    }, 200);
+};
+
 function clearExpiredCache() {
     const now = Date.now();
     for (const [key, value] of filterCache.entries()) {
@@ -477,7 +492,11 @@ function removeLoadingSpinner() {
 function reconnectObserver() {
     if (!window.productObserver) return;
     
-    const products = document.querySelectorAll('.product-card');
+    // ZMĚNA: Hledat produkty pouze v kontejneru obchodu, aby se nepletly s wishlistem
+    const shop = document.getElementById('shop');
+    if (!shop) return;
+    
+    const products = shop.querySelectorAll('.product-card');
     if (products.length === 0) return;
     
     const lastProduct = products[products.length - 1];
@@ -643,6 +662,8 @@ window.showProducts = function() {
     const wishlistSection = document.getElementById('wishlist-section');
     if (wishlistSection) wishlistSection.style.display = 'none';
 
+    
+
 
 
     window.isInfiniteScrollDisabled = false;
@@ -707,6 +728,15 @@ window.showProducts = function() {
     if (portfolioSection) portfolioSection.style.display = 'block';
 
     
+    // 🔥 RESET INFINITE SCROLL
+    //if (typeof resetInfiniteScroll === 'function') {
+     //   resetInfiniteScroll();
+    //}
+    
+    // Znovu zavoláme filtr
+    //if (typeof applyFilters === 'function') {
+      //  applyFilters();
+    //}
 };
 
 export function renderProductsWithInfiniteScroll(productsToRender) {
@@ -755,6 +785,13 @@ export function renderProductsWithInfiniteScroll(productsToRender) {
 }
 
 export function applyFilters() {
+
+        // Pokud je wishlist viditelný, nefiltruj
+    const wishlistSection = document.getElementById('wishlist-section');
+    if (wishlistSection && wishlistSection.style.display === 'block') {
+        return;
+    }
+
     if (currentCategory === '___BLOG___') {
         window.showBlog();
         return;
@@ -1107,3 +1144,9 @@ window.handleSortClick = function(e) {
 };
 
 export { currentCategory, activeOverlayIdx, scrollStartPos };
+// Zpřístupnění proměnných pro infinite scroll globálně
+window.__uiState = {
+    hasMoreProducts: () => hasMoreProducts,
+    allFilteredProducts: () => allFilteredProducts,
+    resetInfiniteScroll: resetInfiniteScroll
+};
