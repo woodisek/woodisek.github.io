@@ -5396,6 +5396,15 @@ body.light-mode .cat-count {
     }
 }
 
+/* Wishlist - landscape na mobilu (3 karty vedle sebe) */
+@media (max-width: 768px) and (orientation: landscape) {
+    .wishlist-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        padding: 10px;
+    }
+}
+
 /* Schovat tlačítka na stránce reset hesla */
 body:has(#reset-password-container) .icon-btn,
 body:has(#reset-password-container) #floating-cart-btn,
