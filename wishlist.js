@@ -66,17 +66,24 @@ function updateWishlistBadge() {
 export function moveToCart(productId) {
     const wishlist = getWishlist();
     const product = wishlist.find(p => p.id === productId);
-    if (product) {
-        // Najdi plný produkt z allProducts
-        import('./api.js').then(api => {
-            const fullProduct = api.allProducts.find(p => p.id === productId);
-            if (fullProduct) {
-                addToCart(fullProduct);
-                removeFromWishlist(productId);
-                showToast("Přesunuto do košíku! 🛒", "✅");
-            }
-        });
-    }
+    if (!product) return;
+    
+    // Vytvoříme produkt z dat uložených ve wishlistu
+    const cartProduct = {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        imgs: [product.img],
+        idx: product.idx,
+        stock: "1",
+        sale: "0",
+        desc: "",
+        ship: ""
+    };
+    
+    addToCart(cartProduct);
+    removeFromWishlist(productId);
+    showToast("Přesunuto do košíku! 🛒", "✅");
 }
 
 // Zobrazení stránky wishlist
