@@ -69,7 +69,7 @@ export default function render(container) {
             <!-- Tlačítka -->
             <div class="bmi-buttons">
                 <button id="bmi-calculate" class="bmi-btn bmi-btn-primary">📊 Spočítat BMI</button>
-                <button id="bmi-clear" class="bmi-btn bmi-btn-secondary">🗑️ Vyčistit</button>
+                <button id="bmi-clear" class="bmi-btn bmi-btn-secondary">🔄️ Reset</button>
             </div>
 
             <!-- Výsledek -->
