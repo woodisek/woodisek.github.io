@@ -3,7 +3,7 @@ export let CONFIG = {
     SHEETS_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTDLmB1BcPIJvI1rVpHHK59r7zTfZJVmQ30BofKB2wszp8aZxJBwLhjwTwbzHkZ1kiozdl7YDQO2cVI/pub?gid=1217363054&single=true&output=csv",
     SETTINGS_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTDLmB1BcPIJvI1rVpHHK59r7zTfZJVmQ30BofKB2wszp8aZxJBwLhjwTwbzHkZ1kiozdl7YDQO2cVI/pub?gid=1043880805&single=true&output=csv",
 
-    APPS_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbz8RNMlkbBsySEdGR2nbwJFMMhaQcMwVTaxLHWHrr03J_pYsdwaDwdfzdYbNZZmFWQ/exec",
+    APPS_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbzA7NV0Jg-DkeGQEIncGFCCOr0ty3ioUI8ji7foxvrsRl_wyfX345YxKGNlRxPcCgs/exec",
     
     PHONE: "+420730996444",
     EMAIL: "hello.plisek@gmail.com",
