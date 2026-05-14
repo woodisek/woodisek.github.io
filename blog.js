@@ -68,6 +68,21 @@ function parseBlogCSV(csvText) {
     return posts;
 }
 
+// Handler pro video v modalu (NEPOUŽÍVÁ stopPropagation - fullscreen bude fungovat)
+window.handleModalVideoClick = function(event) {
+    // Zastavíme propagaci JEN aby se neotevřel modal znovu (ale neblokujeme fullscreen)
+    event.stopPropagation();
+    
+    const placeholder = event.target.closest('.video-placeholder');
+    if (!placeholder) return;
+    
+    // Pokud už je video načtené, neděláme nic (YouTube ovládání přebere klik)
+    if (placeholder.querySelector('iframe')) return;
+    
+    // Načti video
+    loadVideo(placeholder);
+};
+
 function highlightLinks(text) {
     if (!text) return '';
     const urlRegex = /(https?:\/\/[^\s<]+|www\.[^\s<]+)/gi;
@@ -99,6 +114,12 @@ window.openBlogImageFromModal = function(postId, event) {
 window.closeBlogModal = function() {
     const modal = document.getElementById('blog-modal-overlay');
     if (modal) {
+        // Najdi video v modalu a zastav ho
+        const videoPlaceholder = modal.querySelector('.video-placeholder');
+        if (videoPlaceholder) {
+            stopVideo(videoPlaceholder);
+        }
+        
         modal.style.display = 'none';
         document.body.style.overflow = '';
     }
@@ -259,6 +280,25 @@ function showBlogToast(message) {
 window.openBlogModal = function(postId, event) {
     if (event) event.stopPropagation();
     
+    // Zastav VŠECHNA videa na hlavní stránce a obnov placeholdery
+    const allVideosOnPage = document.querySelectorAll('.video-placeholder');
+    allVideosOnPage.forEach(placeholder => {
+        const iframe = placeholder.querySelector('iframe');
+        if (iframe) {
+            // Použijeme stopVideo na každý placeholder
+            // Ale potřebujeme jinou verzi pro hlavní stránku
+            const thumbnailUrl = placeholder.getAttribute('data-thumbnail-url') || 
+                                 (placeholder.querySelector('img')?.src) || 
+                                 'https://via.placeholder.com/400x225?text=Video';
+            const videoUrl = placeholder.getAttribute('data-video-url');
+            
+            placeholder.innerHTML = `
+                <img src="${thumbnailUrl}" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" alt="Video náhled">
+                <button class="video-play-btn" onclick="window.handleVideoClick(event)" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.7); border: none; width: 60px; height: 60px; border-radius: 50%; font-size: 30px; color: white; cursor: pointer;"></button>
+            `;
+        }
+    });
+    
     if (!blogPosts || blogPosts.length === 0) {
         loadBlogPosts().then(() => window.openBlogModal(postId, event));
         return;
@@ -298,13 +338,13 @@ window.openBlogModal = function(postId, event) {
             }
             
             mediaHtml = `
-                <div class="modal-video-container">
-                    <div class="video-placeholder" data-video-url="${embedUrl}" style="position: relative; cursor: pointer; width: 100%; height: 100%; background: #000; aspect-ratio: 16/9;">
-                        <img src="${thumbnailUrl}" style="width: 100%; height: 100%; object-fit: cover;" alt="Video náhled">
-                        <button class="video-play-btn" onclick="window.handleVideoClick(event)"></button>
-                    </div>
-                </div>
-            `;
+    <div class="modal-video-container">
+        <div class="video-placeholder" data-video-url="${embedUrl}" onclick="window.handleModalVideoClick(event)" style="position: relative; cursor: pointer; width: 100%; height: 100%; background: #000; aspect-ratio: 16/9;">
+            <img src="${thumbnailUrl}" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" alt="Video náhled">
+            <button class="video-play-btn" onclick="window.handleModalVideoClick(event)"></button>
+        </div>
+    </div>
+`;
 
         } else if (post.images && post.images.length > 0) {
             const hasMultiple = post.images.length > 1;
@@ -395,18 +435,18 @@ export function renderBlogPosts(containerId = 'blog-container') {
             }
             
             html += `
-                <div class="blog-card" data-id="${post.id}" onclick="window.openBlogModalOnCard('${post.id}', event)">
-                    <div class="video-placeholder" data-video-url="${embedUrl}" style="position: relative; cursor: pointer; aspect-ratio: 16/9; background: #000;">
-                        <img src="${thumbnailUrl}" style="width: 100%; height: 100%; object-fit: cover;" alt="Video náhled">
-                        <button class="video-play-btn" onclick="window.handleVideoClick(event)" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.7); border: none; width: 60px; height: 60px; border-radius: 50%; font-size: 30px; color: white; cursor: pointer;"></button>
-                    </div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">${escapeHtml(post.title)}</h3>
-                        <div class="blog-text">${highlightedPreview}</div>
-                        <button class="blog-read-more" onclick="window.openBlogModal('${post.id}', event)">📖 Číst dále</button>
-                    </div>
-                </div>
-            `;
+    <div class="blog-card" data-id="${post.id}" onclick="window.openBlogModalOnCard('${post.id}', event)">
+        <div class="video-placeholder" data-video-url="${embedUrl}" onclick="window.handleVideoClick(event)" style="position: relative; cursor: pointer; aspect-ratio: 16/9; background: #000;">
+            <img src="${thumbnailUrl}" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" alt="Video náhled">
+            <button class="video-play-btn" onclick="window.handleVideoClick(event)" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.7); border: none; width: 60px; height: 60px; border-radius: 50%; font-size: 30px; color: white; cursor: pointer;"></button>
+        </div>
+        <div class="blog-content">
+            <h3 class="blog-title">${escapeHtml(post.title)}</h3>
+            <div class="blog-text">${highlightedPreview}</div>
+            <button class="blog-read-more" onclick="window.openBlogModal('${post.id}', event)">📖 Číst dále</button>
+        </div>
+    </div>
+`;
         }
         
         // ============================================
@@ -475,6 +515,12 @@ function loadVideo(placeholder) {
     const videoUrl = placeholder.getAttribute('data-video-url');
     if (!videoUrl) return;
     
+    // Uložíme si thumbnail URL před tím, než ho přepíšeme
+    const existingImg = placeholder.querySelector('img');
+    if (existingImg) {
+        placeholder.setAttribute('data-thumbnail-url', existingImg.src);
+    }
+    
     const iframe = document.createElement('iframe');
     iframe.src = videoUrl + (videoUrl.includes('?') ? '&autoplay=1' : '?autoplay=1');
     iframe.frameborder = '0';
@@ -492,18 +538,74 @@ function loadVideo(placeholder) {
     placeholder.appendChild(iframe);
 }
 
-// Globální handler pro kliknutí na tlačítko videa
-window.handleVideoClick = function(event) {
-    const playBtn = event.target.closest('.video-play-btn');
-    if (!playBtn) return;
+// Zastavení videa v placeholderu a obnovení původního stavu
+function stopVideo(placeholder) {
+    if (!placeholder) return;
     
+    const iframe = placeholder.querySelector('iframe');
+    if (!iframe) return;
+    
+    // Uložíme si thumbnail URL
+    let thumbnailUrl = placeholder.getAttribute('data-thumbnail-url');
+    if (!thumbnailUrl) {
+        thumbnailUrl = 'https://via.placeholder.com/400x225?text=Video';
+    }
+    
+    const videoUrl = placeholder.getAttribute('data-video-url');
+    
+    // Kompletně obnovíme placeholder do původního stavu
+    placeholder.innerHTML = `
+        <img src="${thumbnailUrl}" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" alt="Video náhled">
+        <button class="video-play-btn" onclick="window.handleModalVideoClick(event)" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.7); border: none; width: 60px; height: 60px; border-radius: 50%; font-size: 30px; color: white; cursor: pointer;"></button>
+    `;
+}
+
+// Zastaví všechna videa kromě aktuálního a vrátí je do původního stavu
+function stopAllOtherVideos(currentPlaceholder) {
+    const allPlaceholders = document.querySelectorAll('.video-placeholder');
+    
+    allPlaceholders.forEach(placeholder => {
+        if (placeholder === currentPlaceholder) return; // Přeskočíme aktuální
+        
+        const iframe = placeholder.querySelector('iframe');
+        if (iframe) {
+            // Uložíme si potřebné údaje
+            const videoUrl = placeholder.getAttribute('data-video-url');
+            
+            // Najdeme původní thumbnail URL (můžeme ji uložit do data atributu)
+            let thumbnailUrl = placeholder.getAttribute('data-thumbnail-url');
+            if (!thumbnailUrl) {
+                // Pokud nemáme uložený thumbnail, zkusíme ho najít v obrázku
+                const existingImg = placeholder.querySelector('img');
+                thumbnailUrl = existingImg ? existingImg.src : 'https://via.placeholder.com/400x225?text=Video';
+                // Uložíme si ho pro příště
+                placeholder.setAttribute('data-thumbnail-url', thumbnailUrl);
+            }
+            
+            // Kompletně obnovíme placeholder do původního stavu
+            placeholder.innerHTML = `
+                <img src="${thumbnailUrl}" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" alt="Video náhled">
+                <button class="video-play-btn" onclick="window.handleVideoClick(event)" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.7); border: none; width: 60px; height: 60px; border-radius: 50%; font-size: 30px; color: white; cursor: pointer;"></button>
+            `;
+        }
+    });
+}
+
+// Handler pro video na hlavní stránce (blog karty)
+window.handleVideoClick = function(event) {
     event.preventDefault();
     event.stopPropagation();
     
-    const placeholder = playBtn.closest('.video-placeholder');
-    if (placeholder) {
-        loadVideo(placeholder);
-    }
+    const clickedPlaceholder = event.target.closest('.video-placeholder');
+    if (!clickedPlaceholder) return;
+    
+    if (clickedPlaceholder.querySelector('iframe')) return;
+    
+    // Zastav všechna ostatní videa
+    stopAllOtherVideos(clickedPlaceholder);
+    
+    // Načti nové video
+    loadVideo(clickedPlaceholder);
 };
 
 export { createSliderHTML, highlightLinks };
