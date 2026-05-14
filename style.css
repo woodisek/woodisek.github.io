@@ -1204,14 +1204,15 @@ img {
   position: relative;
   animation: fadeInUp 0.3s ease;
 }
+/* Společný styl pro hlavičku obou modalů */
 .product-modal-header,
 .blog-modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 20px;
+  position: relative;  /* Pro absolutní pozici tlačítka */
+  display: block;      /* Změna z flex na block */
+  padding: 16px 50px 16px 20px;  /* Pravý padding pro tlačítko */
   border-bottom: 1px solid var(--border);
   flex-shrink: 0;
+  background: var(--card);
 }
 .blog-modal-header {
   position: sticky;
@@ -1219,15 +1220,81 @@ img {
   background: var(--card);
   z-index: 10;
 }
+
+/* Jen pro blog modal */
+.blog-modal-header {
+  position: relative;
+  min-height: 60px;
+}
+
+.blog-modal-header .blog-modal-close {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+/* Pro product modal přepíšeme transformaci */
+.product-modal-header .blog-modal-close {
+  position: static;
+  transform: none;
+  margin-left: auto;
+}
+
+.product-modal-header .blog-modal-close:hover {
+  transform: scale(1.05) !important;  /* pouze zvětšení */
+}
+
+/* Nadpis - s mezerou pro tlačítko */
 .product-modal-header h3,
 .blog-modal-header h3 {
   font-size: 18px;
   font-weight: 700;
   color: var(--accent);
   margin: 0;
+  padding-right: 10px;  /* malá rezerva */
+  line-height: 1.4;
+  word-wrap: break-word;  /* zalomení dlouhých slov */
 }
+
+/* Indikátor počtu fotek na blog kartě (stejný jako u produktů) */
+.blog-image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px 16px 0 0;
+}
+
+.blog-image-counter {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+    z-index: 10;
+    font-family: monospace;
+}
+
+/* Responzivní pro mobily */
+@media (max-width: 768px) {
+    .blog-image-counter {
+        font-size: 10px;
+        padding: 3px 8px;
+        bottom: 8px;
+        right: 8px;
+    }
+}
+/* Tlačítko close - společné pro oba modaly */
 .product-modal-close,
 .blog-modal-close {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
   background: rgba(0, 0, 0, 0.5);
   border: none;
   color: white;
@@ -1240,11 +1307,14 @@ img {
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
+  will-change: transform;
+  backface-visibility: hidden;
 }
+/* Hover - jednotný (pouze zvětšení, žádný posun) */
 .product-modal-close:hover,
 .blog-modal-close:hover {
   background: var(--accent);
-  transform: scale(1.05);
+  transform: translateY(-50%) scale(1.05);  /* zachová centrování + zvětšení */
 }
 .product-modal-body {
   display: flex;
