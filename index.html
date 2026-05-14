@@ -207,15 +207,19 @@
         <div class="stats-flip-card"><div class="stats-flip-inner"><div class="stats-front"><span class="stats-icon">📦</span><span class="stats-label">Odeslaných balíků</span></div><div class="stats-back"><span class="stats-number" id="stat-orders">856</span></div></div></div>
         <div class="stats-flip-card"><div class="stats-flip-inner"><div class="stats-front"><span class="stats-icon">⭐</span><span class="stats-label">Hodnocení</span></div><div class="stats-back"><span class="stats-number" id="stat-rating">4.9</span><span class="stats-star">★</span></div></div></div>
     </div>
- 
-    <div class="portfolio-section" id="portfolio-container" style="display: none; width: 100%; margin-top: 20px;">
-        <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--accent);"></h3>
-        <div class="portfolio-slider" id="port-slider" style="background: var(--bg);">
-            <div class="spinner" id="port-spin"></div>
-            <img src="" class="portfolio-img" id="port-img" onclick="openPortfolioZoom()" alt="Ukázka dřevěných výrobků Woodisek">
-            <button class="nav-btn btn-prev" onclick="navPort(-1)">‹</button>
-            <button class="nav-btn btn-next" onclick="navPort(1)">›</button>
-            <div class="cnt-tag" id="port-tag">1 / 1</div>
+
+    <!-- ========================================== -->
+    <!-- KONTAKT - ZA STATISTIKAMI -->
+    <!-- ========================================== -->
+    <div id="contact-section" class="contact-section" style="margin-top: 40px; margin-bottom: 40px; width: 100%;"></div>
+
+    <!-- ========================================== -->
+    <!-- UKÁZKY MÉ PRÁCE - PORTFOLIO -->
+    <!-- ========================================== -->
+    <div class="portfolio-section" id="portfolio-container" style="display: none; width: 100%;">
+        <h3 class="about-title" style="font-size: 24px; margin-bottom: 30px;">Ukázky mé práce</h3>
+        <div id="portfolio-grid" class="portfolio-grid-container">
+            <!-- Sem se dynamicky načtou fotky -->
         </div>
     </div>
 </div>
@@ -325,8 +329,8 @@
 
 
 
-<script type="module" src="main.js?v=20250512" defer></script>
-<link rel="stylesheet" href="style.css?v=20250512">
+<script type="module" src="main.js?v=20250511" defer></script>
+<link rel="stylesheet" href="style.css?v=20250511">
 
 
 
