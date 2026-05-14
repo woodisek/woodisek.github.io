@@ -1301,7 +1301,7 @@ img {
   color: white;
   width: 30px;
   height: 30px;
-  border-radius: 50%;
+  border-radius: 10px;
   font-size: 20px;
   cursor: pointer;
   display: flex;
@@ -4952,7 +4952,7 @@ button[onclick*="unsubscribeNewsletter"]:hover {
 /* ----- 8️⃣ CHAT TLAČÍTKA (AI chat) ----- */
 .chat-opt-btn,
 #chat-modal .chat-opt-btn {
-  background: var(--btn-secondary-bg) !important;
+  background: #8b5a2b !important;
   color: var(--btn-secondary-text) !important;
   border: 1px solid var(--accent) !important;
   padding: 8px 14px !important;
