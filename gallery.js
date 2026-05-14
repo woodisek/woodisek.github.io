@@ -75,18 +75,63 @@ window.chImg = function(idx, step, e) {
     }
 };
 
+// ============================================================
+// PORTFOLIO JAKO MŘÍŽKA (3 sloupce)
+// ============================================================
+
 export function initPortfolio() {
     const portfolioContainer = document.getElementById("portfolio-container");
     if (!portfolioContainer) return;
     
+    // Skryj původní slider
+    const oldSlider = document.querySelector('.portfolio-slider');
+    if (oldSlider) oldSlider.style.display = 'none';
+    
     if (portfolioImages && portfolioImages.length > 0) {
         portfolioContainer.style.display = "block";
-        portIdx = 0;
-        updatePortfolioImage();
+        renderPortfolioGrid();
     } else {
         portfolioContainer.style.display = "none";
     }
 }
+
+function renderPortfolioGrid() {
+    const portfolioGrid = document.getElementById('portfolio-grid');
+    if (!portfolioGrid) return;
+    
+    if (!portfolioImages || portfolioImages.length === 0) {
+        portfolioGrid.innerHTML = '<p style="text-align: center; color: var(--text-dim);">📸 Žádné fotky k zobrazení</p>';
+        return;
+    }
+    
+    let html = '<div class="portfolio-grid">';
+    portfolioImages.forEach((img, index) => {
+        // Vytvoří zmenšenou verzi (např. 600px na šířku)
+        const thumbnailUrl = img + '?w=600&h=338&fit=crop';  // pro postimg.cc
+        // Nebo pro jiné hostování: const thumbnailUrl = img.replace(/\.(jpg|png)/, '-small.$1');
+        
+        html += `
+            <div class="portfolio-item" onclick="window.openPortfolioImage(${index})">
+                <div class="portfolio-item-img-container">
+                    <img src="${thumbnailUrl}" loading="lazy" class="portfolio-item-img" alt="Ukázka práce Woodisek ${index + 1}">
+                </div>
+            </div>
+        `;
+    });
+    html += '</div>';
+    
+    portfolioGrid.innerHTML = html;
+}
+
+// Otevření fotky z portfolia v galerii
+window.openPortfolioImage = function(index) {
+    if (!portfolioImages || portfolioImages.length === 0) return;
+    
+    // Otevře plnou verzi v galerii
+    if (typeof window.openImageGallery === 'function') {
+        window.openImageGallery(portfolioImages, index, 'portfolio');
+    }
+};
 
 function updatePortfolioImage() {
     const img = document.getElementById("port-img");
