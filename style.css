@@ -1264,10 +1264,11 @@ img {
     border-radius: 16px 16px 0 0;
 }
 
+/* Indikátor počtu fotek na blog kartě (stejné jako v modalu) */
 .blog-image-counter {
     position: absolute;
-    bottom: 12px;
-    right: 12px;
+    bottom: 16px;      /* stejné jako .modal-cnt-tag */
+    right: 11px;       /* stejné jako .modal-cnt-tag */
     background: rgba(0, 0, 0, 0.6);
     color: white;
     padding: 4px 10px;
@@ -1284,8 +1285,8 @@ img {
     .blog-image-counter {
         font-size: 10px;
         padding: 3px 8px;
-        bottom: 8px;
-        right: 8px;
+        bottom: 8px;    /* stejné jako na mobilu v modalu */
+        right: 8px;     /* stejné jako na mobilu v modalu */
     }
 }
 /* Tlačítko close - společné pro oba modaly */
