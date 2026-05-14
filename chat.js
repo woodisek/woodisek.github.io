@@ -20,7 +20,7 @@ const localAnswers = {
     "🛠️ Péče o výrobky": "Nelakované dřevo: jen suchý hadřík\nLakované: vlhký hadřík s kapkou jaru\nNevystavuj přímému slunci ani radiátorům 🧼",
 };
 
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyXoacS7JQHZQGrdvwAAGJU9jq4IrtkAlG64JFsDVXM8zS8xgLcYwCwU7d_YURjBkI/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwgz8R6xPrWQmMKzy9Z1HwbKr7ztQ9lqMA9KLXyqNaizTqpO1taO9a3s8YaD-6wqQ/exec";
 
 let chatInitialized = false;
 let isWaitingForResponse = false;
