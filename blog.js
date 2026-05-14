@@ -478,7 +478,7 @@ function loadVideo(placeholder) {
     const iframe = document.createElement('iframe');
     iframe.src = videoUrl + (videoUrl.includes('?') ? '&autoplay=1' : '?autoplay=1');
     iframe.frameborder = '0';
-    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen';
     iframe.allowfullscreen = true;
     iframe.style.width = '100%';
     iframe.style.height = '100%';
