@@ -15,7 +15,7 @@ window.allProducts = allProducts;
 
 //Nová verze aplikace APP_VERSION VERZE APP VERSION
 
-const APP_VERSION = '20250511';
+const APP_VERSION = '20250512';
 const storedVersion = localStorage.getItem('app_version');
 if (storedVersion !== APP_VERSION) {
     localStorage.clear();
