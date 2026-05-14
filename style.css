@@ -5404,46 +5404,49 @@ body::before {
 
 
 
-/* Počítadlo u kategorií */
+/* Počítadlo u kategorií - pouze číslo bez pozadí */
 .cat-count {
-    background: var(--accent);
-    color: white;
-    border-radius: 20px;
-    padding: 2px 8px;
+    background: transparent !important;  /* žádné pozadí */
+    color: var(--accent);                /* barva čísla */
+    border-radius: 0;                    /* žádné zaoblení */
+    padding: 0;                          /* žádné vnitřní odsazení */
     font-size: 11px;
     font-weight: 600;
-    margin-left: 8px;
+    margin-left: 5px;                    /* malá mezera od textu */
     display: inline-block;
-    min-width: 24px;
+    min-width: auto;                     /* žádná minimální šířka */
     text-align: center;
 }
 
-/* Light mode */
+/* Light mode - stejná barva */
 body.light-mode .cat-count {
-    background: var(--accent);
-    color: white;
-}
-
-/* Aktivní tlačítko - počítadlo bílé */
-.f-btn.active .cat-count {
-    background: white;
+    background: transparent !important;
     color: var(--accent);
 }
 
-/* Tlačítko Slevy - počítadlo */
+/* Aktivní tlačítko - číslo bílé na tmavém pozadí tlačítka */
+.f-btn.active .cat-count {
+    background: transparent !important;
+    color: white;                        /* bílé číslo na aktivním tlačítku */
+}
+
+/* Tlačítko Slevy - číslo */
 .f-btn[data-cat="Slevy"] .cat-count {
-    background: var(--sale);
+    background: transparent !important;
+    color: var(--sale);                  /* oranžové číslo */
 }
 
-/* Tlačítko Skladem - počítadlo */
+/* Tlačítko Skladem - číslo */
 .f-btn[data-cat="Skladem"] .cat-count {
-    background: var(--green);
+    background: transparent !important;
+    color: var(--green);                 /* zelené číslo */
 }
 
-/* Tlačítko Novinky - počítadlo */
+/* Tlačítko Novinky - číslo */
 .f-btn[data-cat="Novinky"] .cat-count {
-    background: #ffc107;
-    color: #1a1a1a;
+    background: transparent !important;
+    color: #ffc107;                      /* žluté číslo */
+    background: transparent !important;
 }
 
 /* Základ (desktop) */
